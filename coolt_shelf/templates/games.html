@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Ícones do Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/games.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Jogos</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/gamesicon.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body> 
+    <!-- Modelo de Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+      <div class="container-fluid">
+        <!-- Nome principal -->
+        <a class="navbar-brand" href="{% url 'home' %}"> 
+          <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Coolt">
+        </a>
+        <!-- Botão para acesso pelo celular -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Barra de navegação -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!--Define a parte esquerda do nav-->
+            <!-- Página Ativa -->
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">Minha Estante</a>
+            </li>
+
+            <!-- Dropdown por entretenimento -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Explorar
+              </a>
+              <!-- Lista por gênero -->
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
+                  <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
+                </ul>
+
+            </li>
+
+          
+          </ul>
+
+
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!--Define a parte direita do nav, particular de cada entretenimento-->
+            <li class="nav-item">
+              <span class="navbar-brand mb-0 h2">Jogos</span>
+            </li>
+          </ul>
+
+            <!-- Escolha de categorias -->
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                  Plataforma
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  <li><a class="dropdown-item" href="#">PC</a></li>
+                  <li><a class="dropdown-item" href="#">Playstation</a></li>
+                  <li><a class="dropdown-item" href="#">XBOX</a></li>
+                  <li><a class="dropdown-item" href="#">Nintendo</a></li>
+                  <li><a class="dropdown-item" href="#">Mobile</a></li>
+                </ul> 
+              </li>
+            </ul>
+             
+          
+
+          <!-- Barra de pesquisas -->
+          <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+              <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
+            </form>
+
+            <!-- Botão de sair -->
+          <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
+             <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
+              </li>
+          </ul>
+
+        </div>
+      </div>
+  </nav>
+
+
+      <div class="container-fluid gx-5">
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (4 de 12) do espaço vertical 
+          da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-4">
+        <div class="article">
+          <h2>Em Alta</h2>
+
+          <!-- "Cards" que representam os conteúdos no em alta -->
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <!-- Classe img-card foi criada para formatar a imagem da maneira certa -->
+                <img alt="Celeste" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Celeste_box_art_final_2.png" class="img-fluid rounded-start img-card" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Celeste</h5>
+                  <p class="card-text">
+                    <!-- Uso do Bootstrap Icons para mostrar a nota média da obra no site -->
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                  </p>
+                  <!-- Sinopse da obra, "text-ellipsis" controla o numero de linhas máximo que a caixa de texto terá -->
+                  <p class="card-text text-ellipsis-4">Help Madeline survive her inner demons on her journey to the top of Celeste Mountain, in this super-tight platformer from the creators of TowerFall. Brave hundreds of hand-crafted challenges, uncover devious secrets, and piece together the mystery of the mountain.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final da estrutura básica da card, que será repetida para cada uma -->
+          
+          <!-- Cópia de card -->
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img alt="OMORI" src="https://steamcdn-a.akamaihd.net/steam/apps/1150690/library_600x900.jpg" class="img-fluid rounded-start img-card" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">OMORI</h5>
+                  <p class="card-text">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                  </p>
+                  <p class="card-text text-ellipsis-4">Explore a strange world full of colorful friends and foes. When the time comes, the path you’ve chosen will determine your fate... and perhaps the fate of others as well.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final da estrutura básica da card, que será repetida para cada uma -->
+
+          <!-- Cópia de card -->
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img alt="Undertale" src="https://steamcdn-a.akamaihd.net/steam/apps/391540/library_600x900.jpg" class="img-fluid rounded-start img-card" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Undertale</h5>
+                  <p class="card-text">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </p>
+                  <p class="card-text text-ellipsis-4">UNDERTALE! The RPG game where you don't have to destroy anyone.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final da estrutura básica da card, que será repetida para cada uma -->
+
+          <!-- Cópia de card -->
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img alt="Final Fantasy 14: Shadowbringers" src="https://i.imgur.com/Lh7vqLN.jpg" class="img-fluid rounded-start img-card" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Final Fantasy XIV: Shadowbringers</h5>
+                  <p class="card-text">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </p>
+                  <p class="card-text text-ellipsis-3">Take part of the critically acclaimed FINAL FANTASY XIV Online saga with the next expansion pack SHADOWBRINGERS!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final da estrutura básica da card, que será repetida para cada uma -->
+
+          <!-- Cópia de card -->
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img alt="Hollow Knight" src="https://steamcdn-a.akamaihd.net/steam/apps/367520/library_600x900.jpg" class="img-fluid rounded-start img-card" >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Hollow Knight</h5>
+                  <p class="card-text">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </p>
+                  <p class="card-text text-ellipsis-4">Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Final da estrutura básica da card, que será repetida para cada uma -->
+
+
+          <img alt="Tentáculo segurando um joystick" src="{% static 'img/tent_azul.png' %}" class="tentacle"> 
+        </div>
+
+      </div>
+
+      <!-- Bloco da direita, ocupa 2/3 da tela -->
+      <div class="main-right col-md-8">
+        <div class="article carousel-padding">
+          <!-- Carrossel de múltiplos items que utiliza javascript -->
+            <div class="container text-left my-2">
+              <h2 class="carousel-header">&nbsp;&nbsp;Recomendações só pra você</h2>
+              <div class="row mx-auto my-auto justify-content-center">
+                <!-- OBS: Classes "c-1" e "ci-1" foram criadas para ajudar na segregação dos diferentes carrosseis no javascript, para que imagens não se misturem -->
+                <div id="recipeCarousel" class="carousel slide c-1" data-bs-ride="c-1">
+                    <div class="carousel-inner" role="listbox">
+                      
+                      <!-- Estrutura de cada imagem do carrossel, que será repetida para cada item -->
+                        <div class="carousel-item active ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Divinity: Original Sin 2" src="https://steamcdn-a.akamaihd.net/steam/apps/435150/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <!-- Fim da estrutura do carrossel -->
+
+                        <div class="carousel-item ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Persona 4 Golden" src="https://steamcdn-a.akamaihd.net/steam/apps/1113000/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="The Legend of Heroes: Trails in the Sky" src="https://steamcdn-a.akamaihd.net/steam/apps/251150/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="The Legend of Heroes: Trails to Azure" src="https://steamcdn-a.akamaihd.net/steam/apps/1668520/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Baldur's Gate 3" src="https://steamcdn-a.akamaihd.net/steam/apps/1086940/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-1">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Sid Meier's Civilization 6" src="https://steamcdn-a.akamaihd.net/steam/apps/289070/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-1">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Disco Elysium The Final Cut" src="https://steamcdn-a.akamaihd.net/steam/apps/632470/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                      <div class="carousel-item ci-1">
+                        <div class="col-md-2">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img alt="Steins;Gate" src="https://steamcdn-a.akamaihd.net/steam/apps/412830/library_600x900.jpg" class="img-fluid carousel-img">
+                                </div>
+                            </div>
+                        </div>
+                      </div> 
+                      <!-- Fim da estrutura do carrossel -->
+
+                    </div>
+
+                    <a class="carousel-control-prev w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                    
+                </div>
+              </div>
+            </div>
+          <!-- Fim da estrutura do carrossel que será repitida para os outros -->
+
+          <!-- Começo da estrutura do carrossel -->
+            <div class="container text-left my-2">
+              <h2 class="carousel-header">&nbsp;&nbsp;Amados pela crítica</h2>
+              <div class="row mx-auto my-auto justify-content-center">
+
+                <div id="recipeCarousel2" class="carousel slide c-2" data-bs-ride="c-2">
+                    <div class="carousel-inner" role="listbox">
+
+                        <div class="carousel-item active ci-2">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Final Fantasy 14: Shadowbringers" src="https://i.imgur.com/Lh7vqLN.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Hollow Knight" src="https://steamcdn-a.akamaihd.net/steam/apps/367520/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="The House in Fata Morgana" src="https://steamcdn-a.akamaihd.net/steam/apps/303310/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Rhythm Doctor" src="https://steamcdn-a.akamaihd.net/steam/apps/774181/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Black Mesa" src="https://steamcdn-a.akamaihd.net/steam/apps/362890/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Portal 2" src="https://steamcdn-a.akamaihd.net/steam/apps/620/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Undertale" src="https://steamcdn-a.akamaihd.net/steam/apps/391540/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-2">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Katana Zero" src="https://steamcdn-a.akamaihd.net/steam/apps/460950/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div> 
+
+                    </div>
+                    <a class="carousel-control-prev w-aut" href="#recipeCarousel2" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel2" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                  
+              </div>
+            </div>
+            </div>
+          <!-- Fim da estrutura do carrossel -->
+          
+          <!-- Começo da estrutura do carrossel -->
+            <div class="container text-left my-2">
+              <h2 class="carousel-header">&nbsp;&nbsp;Os mais jogados</h2>
+              <div class="row mx-auto my-auto justify-content-center">
+
+                <div id="recipeCarousel3" class="carousel slide c-3" data-bs-ride="c-3">
+                    <div class="carousel-inner" role="listbox">
+
+                        <div class="carousel-item active ci-3">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Grand Theft Auto 5" src="https://steamcdn-a.akamaihd.net/steam/apps/271590/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Final Fantasy 14" src="https://steamcdn-a.akamaihd.net/steam/apps/39210/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Counter Strike: Global Offensive" src="https://steamcdn-a.akamaihd.net/steam/apps/730/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Dota 2" src="https://steamcdn-a.akamaihd.net/steam/apps/570/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Player Unknown's Battlegrounds" src="https://steamcdn-a.akamaihd.net/steam/apps/578080/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Apex Legends" src="https://steamcdn-a.akamaihd.net/steam/apps/1172470/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Rocket League" src="https://steamcdn-a.akamaihd.net/steam/apps/252950/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-3">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Cookie Clicker" src="https://steamcdn-a.akamaihd.net/steam/apps/1454400/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div> 
+
+                    </div>
+                    <a class="carousel-control-prev w-aut" href="#recipeCarousel3" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel3" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                  
+              </div>
+            </div>
+            </div>
+          <!-- Fim da estrutura do carrossel -->
+
+          <!-- Começo da estrutura do carrossel -->
+            <div class="container text-left my-2">
+              <h2 class="carousel-header">&nbsp;&nbsp;Só pra curtir</h2>
+              <div class="row mx-auto my-auto justify-content-center">
+
+                <div id="recipeCarousel4" class="carousel slide c-4" data-bs-ride="c-4">
+                    <div class="carousel-inner" role="listbox">
+
+                        <div class="carousel-item active ci-4">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Overcooked! 2" src="https://steamcdn-a.akamaihd.net/steam/apps/728880/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Pummel Party" src="https://steamcdn-a.akamaihd.net/steam/apps/880940/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Jackbox Party Pack 6" src="https://steamcdn-a.akamaihd.net/steam/apps/1005300/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Keep Talking and Nobody Explodes" src="https://steamcdn-a.akamaihd.net/steam/apps/341800/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Ultimate Chicken Horse" src="https://steamcdn-a.akamaihd.net/steam/apps/386940/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Garry's Mod" src="https://steamcdn-a.akamaihd.net/steam/apps/4000/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Fall Guys" src="https://steamcdn-a.akamaihd.net/steam/apps/1097150/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-4">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Among Us" src="https://steamcdn-a.akamaihd.net/steam/apps/945360/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div> 
+
+                    </div>
+                    <a class="carousel-control-prev w-aut" href="#recipeCarousel4" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel4" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                  
+              </div>
+            </div>
+            </div>
+          <!-- Fim da estrutura do carrossel -->
+
+          <!-- Começo da estrutura do carrossel -->
+            <div class="container text-left my-2">
+              <h2 class="carousel-header">&nbsp;&nbsp;Trama cativante</h2>
+              <div class="row mx-auto my-auto justify-content-center">
+
+                <div id="recipeCarousel5" class="carousel slide c-5" data-bs-ride="c-5">
+                    <div class="carousel-inner" role="listbox">
+
+                        <div class="carousel-item active ci-5">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="The Witcher 3" src="https://steamcdn-a.akamaihd.net/steam/apps/292030/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="The House in Fata Morgana" src="https://steamcdn-a.akamaihd.net/steam/apps/303310/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Robotics;Notes Elite" src="https://steamcdn-a.akamaihd.net/steam/apps/1111380/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Yakuza 0" src="https://steamcdn-a.akamaihd.net/steam/apps/638970/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Persona 5 Royal" src="https://www.mobygames.com/images/covers/l/636447-persona-5-royal-playstation-4-front-cover.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="The Talos Principle" src="https://steamcdn-a.akamaihd.net/steam/apps/257510/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Bioshock" src="https://steamcdn-a.akamaihd.net/steam/apps/7670/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="carousel-item ci-5">
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Divinity Original Sin 2" src="https://steamcdn-a.akamaihd.net/steam/apps/435150/library_600x900.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div> 
+
+                    </div>
+                    <a class="carousel-control-prev w-aut" href="#recipeCarousel5" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w-aut" href="#recipeCarousel5" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                  
+              </div>
+            </div>
+            </div>
+          <!-- Fim da estrutura do carrossel -->
+
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+  <footer class="text-center text-lg-start">
+          <!-- Copyright and Social-->
+          <div class="text-dark text-center p-3">
+            <p class="small"><a href="https://github.com/adamesalles/shelf-lp"><span class="bi bi-github"></span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
+            <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
+          </div>
+          <!-- Copyright and Social-->
+        </footer>
+
+<script src="{% static 'js/multiple_carousel.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+
+</html>

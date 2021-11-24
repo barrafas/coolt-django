@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Ícones do Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/movies.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Filmes</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/moviesicon.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body> 
+    <!-- Modelo de Nav -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container-fluid">
+          <!-- Nome principal -->
+          <a class="navbar-brand" href="{% url 'home' %}"> 
+            <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Coolt">
+          </a>
+          <!-- Botão para acesso pelo celular -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Barra de navegação -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!--Define a parte esquerda do nav-->
+              
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Minha Estante</a>
+              </li>
+
+              <!-- Dropdown por entretenimento -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Explorar
+                </a>
+                <!-- Lista por gênero -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
+                  <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
+                </ul>
+
+              </li>
+
+            
+            </ul>
+
+
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!--Define a parte direita do nav, particular de cada entretenimento-->
+              <li class="nav-item">
+                <span class="navbar-brand mb-0 h2">Filmes</span>
+              </li>
+            </ul>
+
+              <!-- Dropdown por gênero -->
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    Gêneros
+                  </a>
+                  <!-- Lista para subdivisão por gênero -->
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <li><a class="dropdown-item" href="#">Aventura</a></li>
+                    <li><a class="dropdown-item" href="#">Distopia</a></li>
+                    <li><a class="dropdown-item" href="#">Clássicos</a></li>
+                    <li><a class="dropdown-item" href="#">Ficção</a></li>
+                    <li><a class="dropdown-item" href="#">Romance</a></li>
+                  </ul> 
+                </li>
+              </ul>
+               
+            
+
+            <!-- Barra de pesquisas -->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
+              </form>
+  
+              <!-- Botão de sair -->
+              <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
+                  </li>
+              </ul>
+
+          </div>
+        </div>
+    </nav>
+
+      <div class="container-fluid gx-5">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (1/3) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-4">
+
+        <!-- Div de texto da barra esquerda -->
+        <div class="article">
+            <h2>Em Alta</h2>
+            <!-- Card e gutters do bootstrap 5 que definem os paddings -->
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <!-- Adiciona a imagem do card, adaptando-o ao card -->
+                  <img alt="De Volta para o Futuro" src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/97/BackFuturePoster.jpg/225px-BackFuturePoster.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <!-- Texto de descrição, inclusive posicionamento -->
+                <div class="col-md-8">
+                  <div class="card-body ">
+                    <h5 class="card-title">De Volta para o Futuro</h5>
+                    <p class="card-text">
+                    <!-- Ícones de estrela do bootstrap -->
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    </p>
+                    <!-- Texto que é interrompido após 3 linhas -->
+                    <p class="card-text text-ellipsis-4"> Marty McFly, um adolescente de uma pequena cidade californiana, é transportado para a década de 1950 quando a experiência do excêntrico cientista Doc Brown dá errado. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- A partir daqui há repetição do código para cada card, adaptando dados -->
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Interestelar" src="https://br.web.img3.acsta.net/pictures/14/10/31/20/39/476171.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Interestelar</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i></p>
+                      <p class="card-text text-ellipsis-4"> As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Animais Fantásticos e Onde Habitam" src="https://br.web.img3.acsta.net/pictures/16/09/28/18/45/072693.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Animais Fantásticos e Onde Habitam</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                    </p>
+                    <p class="card-text text-ellipsis-3"> Um excêntrico magizoologista carrega uma maleta cheia de animais mágicos coletados durante suas viagens pelo mundo. As criaturas acabam saindo de sua mala em Nova York. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="VIVA: A Vida é uma Festa" src="https://br.web.img3.acsta.net/pictures/17/12/07/11/33/0502209.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">VIVA: A Vida é uma Festa</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </p>
+                      <!-- Corta em 4 linhas -->
+                      <p class="card-text text-ellipsis-4"> Apesar da proibição da música por gerações de sua família, o jovem Miguel sonha em se tornar um músico talentoso como seu ídolo Ernesto de la Cruz. Desesperado para provar seu talento, Miguel se encontra na deslumbrante e colorida Terra dos Mortos.  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Hamilton" src="https://br.web.img3.acsta.net/c_310_420/pictures/20/05/12/15/01/0283188.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Hamilton</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                    </p>
+                      <p class="card-text text-ellipsis-4"> Hamilton é um filme musical estadunidense de 2020, dirigido por Thomas Kail. O filme se trata de uma versão filmada do musical Hamilton: An American Musical, escrito por Lin-Manuel Miranda inspirado na biografia do político estadunidense Alexander Hamilton. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img alt="Tentáculo segurando uma plaqueta de cinema" src="{% static 'img/tent_verde.png' %}" class="tentacle"> 
+        </div>  
+        </div>
+
+        <!-- Bloco da direita, ocupa 2/3 da tela -->
+        <div class="main-right col-md-8">
+            <!-- Ínicio da parte textual, definindo o padding conforme carousel-padding, descrito no css -->
+            <div class="article carousel-padding">
+                <!-- Posicionamento do texto -->
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Recomendações só para você</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <!-- Cria o primeiro carrossel, definindo tags com 1 para uso no js sem mistura dos itens de cada, assim como nos botões-->
+                      <div id="recipeCarousel1" class="carousel slide c-1" data-bs-ride="c-1">
+                          <div class="carousel-inner" role="listbox">
+
+                              <!-- Primeiro item do carrossel, leva a tag active -->
+                              <div class="carousel-item ci-1 active">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Homem de Ferro" src="https://upload.wikimedia.org/wikipedia/pt/0/00/Iron_Man_poster.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <!-- A partir daqui há repetição da estrutura dos itens do carrossel-->
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Relatos Selvagens" src="https://br.web.img3.acsta.net/pictures/14/08/01/15/44/388856.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Onde está Segunda" src="https://br.web.img3.acsta.net/pictures/17/08/25/00/41/571970.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Gremlins" src="https://ottvsimg.ottvs.com.br/cov/wr.056508/0056508_335.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Curtindo a vida adoidado" src="https://m.media-amazon.com/images/I/91gY7XovBvL._AC_SY550_.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O Turista" src="https://br.web.img3.acsta.net/medias/nmedia/18/87/33/50/20028713.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Truque de Mestre" src="https://m.media-amazon.com/images/I/91G2my8TUjL._AC_SY679_.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Bandersnatch" src="https://br.web.img3.acsta.net/pictures/18/12/28/13/25/4689890.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <!-- Definição dos botões do carrossel, href relacionado ao id de cada um-->
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+                
+                <!-- A partir daqui há repetição da estrutura dos carrosseis -->
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Amados pela crítica</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel2" class="carousel slide c-2" data-bs-ride="c-2">
+                            <div class="carousel-inner" role="listbox">
+
+                                <div class="carousel-item active ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Edward mãos de tesoura" src="https://br.web.img2.acsta.net/medias/nmedia/18/91/33/63/20140763.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Cluba da Luta" src="https://br.web.img3.acsta.net/medias/nmedia/18/90/95/96/20122166.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Clube dos Cinco" src="https://4.bp.blogspot.com/-pJUQWLaBCNI/WZ_NlmlxhgI/AAAAAAAAzVM/MPJoN_-1weUJbqVbRd47qoQX4Ix1YcXngCLcBGAs/s1600/breakfastclubposter.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="A Origem" src="https://upload.wikimedia.org/wikipedia/pt/8/84/AOrigemPoster.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O lobo de Wall Street" src="https://upload.wikimedia.org/wikipedia/pt/8/8d/The_Wolf_of_Wall_Street.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Lion" src="https://viureview.com.br/images/filmes/Lion.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="O fabuloso destino de Amélie Poulain" src="https://upload.wikimedia.org/wikipedia/pt/a/a0/Le_fabuleux_destin_d%27Am%C3%A9lie_Poulain.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Os mais assistidos</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel3" class="carousel slide c-3" data-bs-ride="c-3">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Minha mãe é uma peça" src="https://upload.wikimedia.org/wikipedia/pt/d/da/Minha_M%C3%A3e_%C3%A9_uma_Pe%C3%A7a.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Avengers Endgame" src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/9b/Avengers_Endgame.jpg/250px-Avengers_Endgame.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="Titanic" src="https://upload.wikimedia.org/wikipedia/pt/2/22/Titanic_poster.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Turma da Mônica Laços" src="https://upload.wikimedia.org/wikipedia/pt/6/68/Poster-turma-da-monica-lacos.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="A Teoria de Tudo" src="https://br.web.img2.acsta.net/c_310_420/pictures/14/12/02/22/15/327211.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="A Fantástica Fábrica de Chocolate" src="https://br.web.img2.acsta.net/c_310_420/medias/nmedia/18/87/07/40/19871748.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="carousel-item ci-3">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="Meu passado me condena" src="https://upload.wikimedia.org/wikipedia/pt/f/f2/Meu_Passado_Me_Condena_2013.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Sim Senhor" src="https://static.wikia.nocookie.net/sbtpedia/images/d/de/Sim_Senhor_%282008%29.jpg/revision/latest?cb=20170924170157&path-prefix=pt-br" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel3" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel3" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Animações</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel4" class="carousel slide c-4" data-bs-ride="c-4">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Bolt" src="https://upload.wikimedia.org/wikipedia/pt/5/5c/Bolt-filme.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Monstros S.A." src="data:image/jpeg;base64,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" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="urma da Mônica Uma Aventura no Tempo" src="https://upload.wikimedia.org/wikipedia/pt/a/a1/Uma-aventura-no-tempo.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Shrek 2" src="https://br.web.img2.acsta.net/medias/nmedia/18/97/04/22/20504502.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="UP Altas Aventuras" src="https://br.web.img3.acsta.net/medias/nmedia/18/92/03/73/20176438.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Wall-E" src="https://upload.wikimedia.org/wikipedia/pt/3/30/WALL-E.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Rei Leão" src="https://static.wikia.nocookie.net/disney/images/c/c7/Poster-rei-leao-full.jpeg/revision/latest/scale-to-width-down/270?cb=20160925204728&path-prefix=pt-br" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel4" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel4" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Boa trilha sonora</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel5" class="carousel slide c-5" data-bs-ride="c-5">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O Rei do Show" src="data:image/jpeg;base64,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" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="A Bela e a Fera" src="https://upload.wikimedia.org/wikipedia/pt/thumb/d/d6/Beauty_and_the_Beast_2017_poster.jpg/200px-Beauty_and_the_Beast_2017_poster.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Homem-Aranha no Aranhaverso" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzqFzo_GNjkHrraEMAhdKjnDC-v17fRRmbHScTLNl6T116eHdqCVByntZAEBGX1vuUDGg&usqp=CAU" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Caminhos da Floresta" src="http://2.bp.blogspot.com/-PFC8ndnhHVE/VJS3XGKv3-I/AAAAAAAAxa4/mLol9O0y8z0/s1600/intothewoods.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="Bohemian Rhapsody" src="https://br.web.img2.acsta.net/pictures/18/08/24/21/29/2341995.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Capitão Fantástico" src="https://m.media-amazon.com/images/M/MV5BMjE5OTM0OTY5NF5BMl5BanBnXkFtZTgwMDcxOTQ3ODE@._V1_.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Shrek 2" src="https://br.web.img2.acsta.net/medias/nmedia/18/97/04/22/20504502.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel5" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel5" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+      </div>
+      <footer class="text-center text-lg-start">
+          <!-- Copyright and Social-->
+            <div class="text-dark text-center p-3">
+                <p class="small"><a href="https://github.com/adamesalles/shelf-lp"><span class="bi bi-github"></span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
+                <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
+            </div>
+          <!-- Copyright and Social-->
+        </footer>
+    
+    <!-- Importa os scripts do javascript utilizado para os carroseis e do boostrap 5 -->
+    <script src="{% static 'js/multiple_carousel.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </body>
+</html>

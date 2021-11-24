@@ -1,0 +1,145 @@
+body {
+  background-color: #0d0221;
+  color: black;
+  font-size: 18px;
+  padding-top: 125px;
+}
+body h2 {
+  font-size: 32px;
+}
+body p {
+  font-size: 16px;
+}
+
+.dark-article, .article {
+  padding: 20px 10px;
+}
+
+.article {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #887bb0;
+  border-radius: 10px;
+}
+
+.dark-article {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #887bb0;
+  border-radius: 10px;
+  background-color: #0d0221;
+  color: snow;
+}
+
+div.card {
+  max-height: 11.6vw;
+}
+div.card img {
+  height: 11.5vw;
+  object-fit: cover;
+}
+div.card img.img-card {
+  width: 85%;
+}
+div.card h5 {
+  margin-left: -1.7vw;
+  margin-top: -0.5vw;
+  font-size: 1.5vw;
+}
+div.card p {
+  margin-left: -1.7vw;
+  font-size: 1vw;
+  margin-bottom: 0.3vw;
+}
+
+.card a {
+  color: black;
+  text-decoration: none;
+}
+.card a:hover {
+  color: #0d0221;
+}
+
+.huge {
+  font-size: 72px;
+}
+
+.big {
+  font-size: 48px;
+}
+
+.medium {
+  font-size: 32px;
+}
+
+.small {
+  font-size: 21px;
+}
+
+.tiny {
+  font-size: 16px;
+}
+
+.sans-seriff {
+  font-family: "Roboto", sans-seriff;
+}
+
+.seriff {
+  font-family: "Roboto Slab", seriff;
+}
+
+.text-ellipsis-4, .text-ellipsis-3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.text-ellipsis-3 {
+  -webkit-line-clamp: 3;
+}
+
+.text-ellipsis-4 {
+  -webkit-line-clamp: 4;
+}
+
+.round {
+  border-radius: 30px;
+}
+
+nav {
+  background-color: #887bb0;
+}
+
+footer {
+  background-color: #887bb0;
+  margin-top: 100px;
+}
+footer a {
+  color: black;
+  text-decoration: none;
+}
+footer a:hover {
+  color: snow;
+}
+
+.btn-outline-success, .btn-outline-dark {
+  color: #0d0221;
+  border-color: #0d0221;
+}
+.btn-outline-success:hover, .btn-outline-dark:hover {
+  background-color: #0d0221;
+  border-color: #0d0221;
+}
+
+.btn-check:checked + .btn-outline-success, .btn-check:checked + .btn-outline-dark {
+  background-color: #0d0221;
+  border-color: #0d0221;
+}
+
+.dropdown-item:focus {
+  background-color: #0d0221;
+}
+
+/*# sourceMappingURL=main.css.map */

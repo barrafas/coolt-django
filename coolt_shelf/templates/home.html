@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Ícones do Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Home</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/tako2.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+</head>
+
+
+
+<body> 
+    <!-- Modelo de Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+          <!-- Nome principal -->
+          <a class="navbar-brand" href="#"> 
+            <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Nome">
+          </a>
+          <!-- Botão para acesso pelo celular -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Barra de navegação -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Minha Estante</a>
+              </li>
+
+              <!-- Lista de Outras Páginas -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Explorar
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
+                  <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Barra de pesquisas -->
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+              <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
+            </form>
+
+            <!-- Botão de sair -->
+            <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="col-md-8">
+            <div class="article">
+                <h2>Confira os lançamentos da semana!</h2>
+                <!-- Elemento Bootstrap para montar um "carrossel" de display de imagens -->
+                <div id="carouselExampleIndicators" class="carousel slide  single-carousel" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    
+                    <!-- Imagens do carrossel (É NECESSÁRIO QUE SEJAM DO EXATO MESMO TAMANHO) -->
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images3.alphacoders.com/112/thumb-1920-1123324.jpg" class="d-block w-100 carousel-img" alt="Modern Family">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s2.glbimg.com/I6f4g774Xl9Sp_go92lmK6JXNhE=/0x0:1920x1080/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2019/r/Z/BKpzjkSFO1B5cTAaEGsA/batman-arkham-collection-techtudo.jpg" class="d-block w-100 carousel-img" alt="Batman Arkham">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images2.alphacoders.com/901/thumb-1920-901312.png" class="d-block w-100 carousel-img" alt="Darling in the Franxx">
+                    </div>
+                    </div>
+                    
+                    <!-- Setas de navegação do carrossel -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+        <!-- Blocos de texto quaisquer -->
+            <div class="container text-left my-2">
+                <div class="row mx-auto my-auto justify-content-center">
+                <h2 class="carousel-header">&nbsp;Recomendações só para você</h2>
+                  <div id="recipeCarousel7" class="carousel slide c-7" data-bs-ride="c-7">
+                      <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active ci-7">
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Fullmetal Alchemist Brotherhood" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-4CpuT7iWcZ37.png" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Harry Potter e o Prisioneiro de Azkaban" src="https://images-na.ssl-images-amazon.com/images/I/81u+ljPVifL.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="A Teoria de Tudo" src="https://br.web.img2.acsta.net/c_310_420/pictures/14/12/02/22/15/327211.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Hora de Aventura" src="https://br.web.img3.acsta.net/pictures/14/04/22/09/03/422873.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Cowboy Bebop" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1-CXtrrkMpJ8Zq.png" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Pesadelo na Cozinha" src="https://i.pinimg.com/originals/6a/69/fd/6a69fd139289abe8c0ddab4dec42d84a.png" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+  
+                          <div class="carousel-item ci-7">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Avengers Endgame" src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/9b/Avengers_Endgame.jpg/250px-Avengers_Endgame.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Turma da Mônica Laços" src="https://upload.wikimedia.org/wikipedia/pt/6/68/Poster-turma-da-monica-lacos.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="A Teoria de Tudo" src="https://br.web.img2.acsta.net/c_310_420/pictures/14/12/02/22/15/327211.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="O Hobbit" src="https://www.lojadobolseiro.com.br/uploads/images/2020/01/33-livro-a-queda-de-gondolin-j-r-r-tolkien-poster-33-1579485171.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Desventuras em Série" src="https://media.fstatic.com/okt_vFH3yDNK8jNp0MMmi8jCcC8=/290x478/smart/media/movies/covers/2018/12/series-of-unfortunate-events-key-art.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="Skin Wars" src="https://m.media-amazon.com/images/M/MV5BMjI2NzY4NjQxM15BMl5BanBnXkFtZTgwMjEyNDIwNzE@._V1_.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev w-aut" href="#recipeCarousel7" role="button" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </a>
+                      <a class="carousel-control-next w-aut" href="#recipeCarousel7" role="button" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </a>
+                    
+                </div>
+                </div>
+
+                <h2 class="carousel-header">&nbsp;&nbsp;Na lista de espera</h2>
+                <div class="row mx-auto my-auto justify-content-center">
+  
+                  <div id="recipeCarousel8" class="carousel slide c-8" data-bs-ride="c-8">
+                      <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active ci-8">
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="My Hero Academia" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx117193-yZUKig9K220H.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="O menino do pijama listrado" src="https://cdl-static.s3-sa-east-1.amazonaws.com/covers/9788535911121_gg.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Sid Meier's Civilization 6" src="https://steamcdn-a.akamaihd.net/steam/apps/289070/library_600x900.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Contra Mim" src="https://m.media-amazon.com/images/I/51RzF19sb6L.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="card">
+                                      <div class="card-img">
+                                          <img alt="Clube dos Cinco" src="https://4.bp.blogspot.com/-pJUQWLaBCNI/WZ_NlmlxhgI/AAAAAAAAzVM/MPJoN_-1weUJbqVbRd47qoQX4Ix1YcXngCLcBGAs/s1600/breakfastclubposter.jpg" class="img-fluid carousel-img">
+                                      </div>
+                                  </div>
+                              </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Obey Me!" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131880-LVei71RpRj7i.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+  
+                          <div class="carousel-item ci-8">
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Grand Theft Auto 5" src="https://steamcdn-a.akamaihd.net/steam/apps/271590/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Fahrenheit 451" src="https://images-na.ssl-images-amazon.com/images/I/41F7Udiwd%2BL._SX342_SY445_QL70_ML2_.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Sense 8" src="https://br.web.img2.acsta.net/pictures/17/04/10/16/46/409558.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Gremlins" src="https://ottvsimg.ottvs.com.br/cov/wr.056508/0056508_335.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img alt="Rocket League" src="https://steamcdn-a.akamaihd.net/steam/apps/252950/library_600x900.jpg" class="img-fluid carousel-img">
+                                    </div>
+                                </div>
+                            </div>
+                          <div class="col-md-2">
+                              <div class="card">
+                                  <div class="card-img">
+                                      <img alt="The Expanse" src="https://assets0.minhaserie.com.br/uploads/editor_pictures/000/075/611/content_pic.jpg" class="img-fluid carousel-img">
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev w-aut" href="#recipeCarousel8" role="button" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </a>
+                      <a class="carousel-control-next w-aut" href="#recipeCarousel8" role="button" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </a>
+                    
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <div class="col-md-4">
+            <div class="article">
+               <h2>Em Alta</h2>
+               <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <!-- Adiciona a imagem do card, adaptando-o ao card -->
+                    <img alt="How I Met Your Mother" src="https://br.web.img3.acsta.net/c_310_420/pictures/210/609/21060989_20131126123652773.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                  </div>
+                  <!-- Texto de descrição, inclusive posicionamento -->
+                  <div class="col-md-8">
+                    <div class="card-body ">
+                      <h5 class="card-title"><a href="{% url 'work' %}">How I Met Your Mother</a></h5>
+                      <p class="card-text">
+                      <!-- Ícones de estrela do bootstrap -->
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      </p>
+                      <!-- Texto que é interrompido após 3 linhas -->
+                      <p class="card-text text-ellipsis-3"> Em 2030, o arquiteto Ted Mosby (Josh Radnor) conta a história sobre como conheceu a mãe dos seus filhos. Ele volta no tempo para 2005, relembrando suas aventuras amorosas em Nova York e a busca pela mulher dos seus sonhos. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <!-- Adiciona a imagem do card, adaptando-o ao card -->
+                    <img alt="Harry Potter e a Pedra Filosofal" src="https://m.media-amazon.com/images/I/51DgYTEd49L.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                  </div>
+                  <!-- Texto de descrição, inclusive posicionamento -->
+                  <div class="col-md-8">
+                    <div class="card-body ">
+                      <h5 class="card-title">Harry Potter e a Pedra Filosofal</h5>
+                      <p class="card-text">
+                      <!-- Ícones de estrela do bootstrap -->
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      </p>
+                      <!-- Texto que é interrompido após 3 linhas -->
+                      <p class="card-text text-ellipsis-3"> J.K. Rowling. Conta a história de Harry Potter, um órfão criado pelos tios que descobre, em seu décimo primeiro aniversário, que é um bruxo. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+             
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="VIVA: A Vida é uma Festa" src="https://br.web.img3.acsta.net/pictures/17/12/07/11/33/0502209.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">VIVA: A Vida é uma Festa</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </p>
+                      <!-- Corta em 4 linhas -->
+                      <p class="card-text text-ellipsis-3"> Apesar da proibição da música por gerações de sua família, o jovem Miguel sonha em se tornar um músico talentoso como seu ídolo Ernesto de la Cruz. Desesperado para provar seu talento, Miguel se encontra na deslumbrante e colorida Terra dos Mortos.  </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Made in Abyss" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97986-fzJBML9qecb4.jpg" class="img-fluid rounded-start img-card" >
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Made in Abyss</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                    </p>
+                    <p class="card-text text-ellipsis-4">The "Abyss" is the last unexplored place in the world. Strange and wonderful creatures roam within, and it is full of precious relics that present humans can't recreate. Those that dare to explore the depths are known as "Cave Raiders." An orphan girl named Riko lives on the rim. Her dream is to become a Cave Raider like her mother and solve the mysteries of the cave system. One day, Riko starts exploring the caves and discovers a robot who resembles a human boy.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    <footer class="text-center text-lg-start">
+      <!-- Copyright and Social-->
+      <div class="text-dark text-center p-3">
+          <p class="small"><a href="https://github.com/adamesalles/shelf-lp"><span class="bi bi-github"> </span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
+          <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
+      </div>
+      <!-- Copyright and Social-->
+    </footer>
+    <script src="js/multiple_carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
+<!-- Script do Bootstrap -->
+</html>

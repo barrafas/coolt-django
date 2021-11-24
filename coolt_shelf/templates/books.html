@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Ícones do Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/books.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Livros</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/booksicon.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body> 
+    <!-- Modelo de Nav -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container-fluid">
+          <!-- Nome principal -->
+          <a class="navbar-brand" href="{% url 'home' %}"> 
+            <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Coolt">
+          </a>
+          <!-- Botão para acesso pelo celular -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Barra de navegação -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!--Define a parte esquerda do nav-->
+              <!-- Página Ativa -->
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Minha Estante</a>
+              </li>
+
+              <!-- Dropdown por entretenimento -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Explorar
+                </a>
+                <!-- Lista por gênero -->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
+                  <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
+                </ul>
+
+              </li>
+
+            
+            </ul>
+
+
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!--Define a parte direita do nav, particular de cada entretenimento-->
+              <li class="nav-item">
+                <span class="navbar-brand mb-0 h2">Livros</span>
+              </li>
+            </ul>
+
+              <!-- Dropdown por gênero -->
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    Gêneros
+                  </a>
+                  <!-- Lista para subdivisão por gênero -->
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <li><a class="dropdown-item" href="#">Aventura</a></li>
+                    <li><a class="dropdown-item" href="#">Distopia</a></li>
+                    <li><a class="dropdown-item" href="#">Clássicos</a></li>
+                    <li><a class="dropdown-item" href="#">Ficção</a></li>
+                    <li><a class="dropdown-item" href="#">Romance</a></li>
+                  </ul> 
+                </li>
+              </ul>
+               
+            
+
+            <!-- Barra de pesquisas -->
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
+              </form>
+  
+              <!-- Botão de sair -->
+            <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
+               <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
+                </li>
+            </ul>
+
+          </div>
+        </div>
+    </nav>
+
+      <div class="container-fluid gx-5">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (1/3) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-4">
+
+        <!-- Div de texto da barra esquerda -->
+        <div class="article">
+            <h2>Em Alta</h2>
+            <!-- Card e gutters do bootstrap 5 que definem os paddings -->
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <!-- Adiciona a imagem do card, adaptando-o ao card -->
+                  <img alt="Harry Potter e a Pedra Filosofal" src="https://m.media-amazon.com/images/I/51DgYTEd49L.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <!-- Texto de descrição, inclusive posicionamento -->
+                <div class="col-md-8">
+                  <div class="card-body ">
+                    <h5 class="card-title">Harry Potter e a Pedra Filosofal</h5>
+                    <p class="card-text">
+                    <!-- Ícones de estrela do bootstrap -->
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    </p>
+                    <!-- Texto que é interrompido após 3 linhas -->
+                    <p class="card-text text-ellipsis-3"> J.K. Rowling. Conta a história de Harry Potter, um órfão criado pelos tios que descobre, em seu décimo primeiro aniversário, que é um bruxo. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- A partir daqui há repetição do código para cada card, adaptando dados -->
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="a máquina de fazer espanhóis" src="https://blog.estantevirtual.com.br/wp-content/uploads/medium_1652-205x300.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">a máquina de fazer espanhóis</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i></p>
+                      <p class="card-text text-ellipsis-3"> Válter Hugo Mãe. Surpreendente retrato da vida dos velhos, este livro fala intimamente dos fantasmas da portugalidade e da candura que, afinal, existe mesmo nos momentos mais tristes. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Como morrem os pobres e outros ensaios" src="https://m.media-amazon.com/images/I/519FcGp1vVL.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Como morrem os pobres e outros ensaios</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </p>
+                    <p class="card-text text-ellipsis-3"> George Orwell. Relato anedótico de suas experiências em um hospital público francês que desencadeia uma contemplação da literatura hospitalar no contexto da medicina do século XIX. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="Orgulho e Preconceito" src="https://m.media-amazon.com/images/I/511VQoE7CXL.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Orgulho e Preconceito</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </p>
+                      <!-- Corta em 4 linhas -->
+                      <p class="card-text text-ellipsis-4"> Jane Austen. Clássico da literatura inglesa que critica a sociedade burguesa inglesa da época pelas relações ocasionadas pelo amor e dinheiro. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img alt="O palácio de inverno" src="https://m.media-amazon.com/images/I/51UeRqYVQ4L.jpg" class="img-fluid rounded-start img-card" width="500" height="500">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">O palácio de inverno</h5>
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                    </p>
+                      <p class="card-text text-ellipsis-4"> John Boyne. De forma não-linear, o romance conta a história de Georgy que, às vésperas da Revolução Russa salva a vida do Czar por acidente, e torna-se  guarda-costas do filho caçula do czar Nicolau. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <img alt="Tentáculo segurando um livro" src="{% static 'img/tent_laranja.png' %}" class="tentacle">
+        </div>
+  
+        </div>
+
+        <!-- Bloco da direita, ocupa 2/3 da tela -->
+        <div class="main-right col-md-8">
+            <!-- Ínicio da parte textual, definindo o padding conforme carousel-padding, descrito no css -->
+            <div class="article carousel-padding">
+                <!-- Posicionamento do texto -->
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Recomendações só para você</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <!-- Cria o primeiro carrossel, definindo tags com 1 para uso no js sem mistura dos itens de cada, assim como nos botões-->
+                      <div id="recipeCarousel1" class="carousel slide c-1" data-bs-ride="c-1">
+                          <div class="carousel-inner" role="listbox">
+
+                              <!-- Primeiro item do carrossel, leva a tag active -->
+                              <div class="carousel-item ci-1 active">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O morro dos ventos uivantes" src="https://cdl-static.s3-sa-east-1.amazonaws.com/covers/9788537817520_gg.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <!-- A partir daqui há repetição da estrutura dos itens do carrossel-->
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="A dança do universo" src="https://images-na.ssl-images-amazon.com/images/I/91xv9v926RL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Flores para Algernon" src="https://m.media-amazon.com/images/I/51OoTRAChFL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Os crimes ABC" src="https://images-na.ssl-images-amazon.com/images/I/81rqjb5EIdL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="o Cortiço" src="https://images.tcdn.com.br/img/img_prod/783226/o_cortico_1121_1_20200630195349.png" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Lutando na Espanha" src="http://s3.amazonaws.com/cdn.globolivros.com.br/livros/2410/medium_2410.jpg?1614980436" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Contra Mim" src="https://m.media-amazon.com/images/I/51RzF19sb6L.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-1">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Vidas secas" src="https://m.media-amazon.com/images/I/410X4mW-n1L.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <!-- Definição dos botões do carrossel, href relacionado ao id de cada um-->
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel1" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+                
+                <!-- A partir daqui há repetição da estrutura dos carrosseis -->
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Amados pela crítica</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel2" class="carousel slide c-2" data-bs-ride="c-2">
+                            <div class="carousel-inner" role="listbox">
+
+                                <div class="carousel-item active ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Alice no País das Maravilhas" src="https://m.media-amazon.com/images/I/51E9GHXUc+L.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="A Abadia de Northanger" src="https://m.media-amazon.com/images/I/51cjvsRcJvL.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Hora de Alimentar Serpentes" src="https://m.media-amazon.com/images/I/51ZYoWdRt4L.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Fahrenheit 451" src="https://images-na.ssl-images-amazon.com/images/I/41F7Udiwd%2BL._SX342_SY445_QL70_ML2_.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Terra Papagalli" src="https://m.media-amazon.com/images/I/611fIw2AThL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="Quincas Borba" src="https://images.tcdn.com.br/img/img_prod/783226/quincas_borba_2516_1_20201215114418.png" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item ci-2">
+                                    <div class="col-md-2">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img alt="O Fantasma da Ópera" src="https://m.media-amazon.com/images/I/41QZ-NGBhwL.jpg" class="img-fluid carousel-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Os mais lidos</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel3" class="carousel slide c-3" data-bs-ride="c-3">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Harry Potter e o Prisioneiro de Azkaban" src="https://images-na.ssl-images-amazon.com/images/I/81u+ljPVifL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O menino do pijama listrado" src="https://cdl-static.s3-sa-east-1.amazonaws.com/covers/9788535911121_gg.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="1984" src="https://cdl-static.s3-sa-east-1.amazonaws.com/covers/9788535914849_gg.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O tempo entre costuras" src="https://m.media-amazon.com/images/I/41w7YG48VkL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O Hobbit" src="https://www.lojadobolseiro.com.br/uploads/images/2020/01/33-livro-a-queda-de-gondolin-j-r-r-tolkien-poster-33-1579485171.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Depois do Funeral" src="https://m.media-amazon.com/images/I/41vhfFARJgL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="carousel-item ci-3">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="Dom Casmurro" src="https://images-na.ssl-images-amazon.com/images/I/61AjcNYviyL.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+
+                              <div class="carousel-item ci-3">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O Código Bro" src="https://m.media-amazon.com/images/I/51UgCA8CK+L.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel3" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel3" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Infantojuvenil</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel4" class="carousel slide c-4" data-bs-ride="c-4">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Jogos Vorazes" src="https://m.media-amazon.com/images/I/412YcnhZs1L.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Percy Jackson e o Ladrão de raios" src="https://lojasaraiva.vteximg.com.br/arquivos/ids/12104831/1006786396.jpg?v=637142231647830000" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Diário de uma Banana" src="https://images-na.ssl-images-amazon.com/images/I/919dh4AX2hL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O teorema Katherine" src="https://m.media-amazon.com/images/I/41bEddLeVGL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="A Maldição do Tigre" src="https://images-na.ssl-images-amazon.com/images/I/51kCsUt1g-L._SX342_SY445_QL70_ML2_.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Fazendo meu Filme" src="https://images-na.ssl-images-amazon.com/images/I/81+9BBfCBYL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-4">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="A Seleção" src="https://images-na.ssl-images-amazon.com/images/I/91nWl2ttCKL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel4" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel4" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="container text-left my-2">
+                  <h2>&nbsp;&nbsp;Pegue seu lencinho</h2>
+                  <div class="row mx-auto my-auto justify-content-center">
+                      <div id="recipeCarousel5" class="carousel slide c-5" data-bs-ride="c-5">
+                          <div class="carousel-inner" role="listbox">
+
+                              <div class="carousel-item active ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O diário de Anne Frank" src="https://lojasaraiva.vteximg.com.br/arquivos/ids/12105091/1004993142.jpg?v=637142232777270000" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O diário de Myriam" src="https://m.media-amazon.com/images/I/51IC3l03D-L.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O menino no alto da montanha" src="https://m.media-amazon.com/images/I/51EArZi6jYL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="O filho de mil homens" src="https://m.media-amazon.com/images/I/41+ABHyPmVL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                <div class="col-md-2">
+                                    <div class="card">
+                                        <div class="card-img">
+                                            <img alt="A última carta de amor" src="https://images-na.ssl-images-amazon.com/images/I/61px0FW2wbL.jpg" class="img-fluid carousel-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Uma história de solidão" src="https://m.media-amazon.com/images/I/510dcwCpWlL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="carousel-item ci-5">
+                                  <div class="col-md-2">
+                                      <div class="card">
+                                          <div class="card-img">
+                                              <img alt="Cem anos de solidão" src="https://images-na.ssl-images-amazon.com/images/I/817esPahlrL.jpg" class="img-fluid carousel-img">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel5" role="button" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel5" role="button" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+      </div>
+      <footer class="text-center text-lg-start">
+          <!-- Copyright and Social-->
+          <div class="text-dark text-center p-3">
+            <p class="small"><a href="https://github.com/adamesalles/shelf-lp"><span class="bi bi-github"></span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
+            <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
+          </div>
+          <!-- Copyright and Social-->
+        </footer>
+    
+    <!-- Importa os scripts do javascript utilizado para os carroseis e do boostrap 5 -->
+    <script src="{% static 'js/multiple_carousel.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </body>
+</html>
