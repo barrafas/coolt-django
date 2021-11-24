@@ -1,5 +1,5 @@
 # coolt-django
-Transição do projeto presente no repositório https://github.com/adamesalles/shelf-lp em plataforma Django.
+Transição do projeto presente no repositório https://github.com/adamesalles/shelf-lp para plataforma Django.
 
 # Coolt
 
