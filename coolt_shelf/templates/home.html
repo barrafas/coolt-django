@@ -1,18 +1,11 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
 {% load django_bootstrap5 %}
 {% load bootstrap_icons %}
 {% load static %}
 
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    {% bootstrap_css %}
-    <!-- Ícones do Bootstrap  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+{% block headinfo %}
     <!-- Nosso CSS (SASS) -->
     <link href="{% static 'css/home.css' %}" rel="stylesheet">
     <!--Atualiza o título da página-->
@@ -21,62 +14,12 @@
     <link rel="icon" href="{% static 'img/tako2.png' %}">
     <!-- Carrega as fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-</head>
+{% endblock %}
 
 
 
-<body> 
-    <!-- Modelo de Nav -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container-fluid">
-          <!-- Nome principal -->
-          <a class="navbar-brand" href="#"> 
-            <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Nome">
-          </a>
-          <!-- Botão para acesso pelo celular -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <!-- Barra de navegação -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' %}">Minha Estante</a>
-              </li>
-
-              <!-- Lista de Outras Páginas -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Explorar
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
-                  <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
-                  <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
-                  <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
-                  <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
-                </ul>
-              </li>
-            </ul>
-
-            <!-- Barra de pesquisas -->
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
-              <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
-            </form>
-
-            <!-- Botão de sair -->
-            <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
-                </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+{% block content %}
+    {% include 'nav.html' %}
 
     <div class="container">
         <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
@@ -440,17 +383,10 @@
 
         </div>
     </div>
-    <footer class="text-center text-lg-start">
-      <!-- Copyright and Social-->
-      <div class="text-dark text-center p-3">
-          <p class="small"><a href="https://github.com/barrafas/coolt-django"><span class="bi bi-github"> </span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
-          <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
-      </div>
-      <!-- Copyright and Social-->
-    </footer>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Importa os scripts do javascript utilizado para os carroseis e do boostrap 5 -->
     <script src="js/multiple_carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-</body>
-
-<!-- Script do Bootstrap -->
-</html>
+{% endblock %}

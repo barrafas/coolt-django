@@ -1,18 +1,11 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
 {% load django_bootstrap5 %}
 {% load bootstrap_icons %}
 {% load static %}
 
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    {% bootstrap_css %}
-    <!-- Ícones do Bootstrap  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+{% block headinfo %}
     <!-- Nosso CSS (SASS) -->
     <link href="{% static 'css/games.css' %}" rel="stylesheet">
     <!--Atualiza o título da página-->
@@ -21,10 +14,10 @@
     <link rel="icon" href="{% static 'img/gamesicon.png' %}">
     <!-- Carrega as fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-</head>
+{% endblock %}
 
 
-<body> 
+{% block content %}
     <!-- Modelo de Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-light">
       <div class="container-fluid">
@@ -775,18 +768,10 @@
       </div>
     </div>
   </div>
-  <footer class="text-center text-lg-start">
-          <!-- Copyright and Social-->
-          <div class="text-dark text-center p-3">
-            <p class="small"><a href="https://github.com/barrafas/coolt-django"><span class="bi bi-github"></span> Repositório GitHub</a> - <a href="{% url 'about' %}">Sobre</a></p>
-            <p class="small">2021 - Carol Erthal - Eduardo Adame - Tiago Barradas - Rodrigo Pintucci - Vinicius Hedler</p>
-          </div>
-          <!-- Copyright and Social-->
-        </footer>
+{% endblock %}
 
+{% block scripts %}
 <script src="{% static 'js/multiple_carousel.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}
