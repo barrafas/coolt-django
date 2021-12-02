@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 top_ids = set()
 
 # SCRAPING DOS TOP 100 ID
-for limit in (0, 50):
+for limit in (0,):
     html_text = requests.get(
         f'https://myanimelist.net/topanime.php?limit={limit}').text
 
@@ -93,8 +93,8 @@ for id in top_ids:
 
 
 # Exportando
-works.to_csv('works.csv')
-genres_df.to_csv('genres.csv')
-creators_df.to_csv('creators.csv')
-work_genres.to_csv('work_genres.csv')
-work_creators.to_csv('work_creators.csv')
+works.to_csv('works.csv', encoding='utf-8')
+genres_df.to_csv('genres.csv', encoding='utf-8')
+creators_df.to_csv('creators.csv', encoding='utf-8')
+work_genres.to_csv('work_genres.csv', encoding='utf-8')
+work_creators.to_csv('work_creators.csv', encoding='utf-8')

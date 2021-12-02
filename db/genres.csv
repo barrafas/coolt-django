@@ -1,16 +1,14 @@
-,genre
-0,Adventure
-1,Fantasy
+id,genre
+0,Drama
+1,Supernatural
 2,Mystery
-3,Slice of Life
-4,Supernatural
-5,Comedy
-6,Drama
-7,Romance
-8,Sci-Fi
-9,Suspense
-10,Action
-11,Sports
-12,Horror
-13,Ecchi
-14,Avant Garde
+3,Action
+4,Adventure
+5,Fantasy
+6,Slice of Life
+7,Comedy
+8,Sports
+9,Sci-Fi
+10,Romance
+11,Horror
+12,Suspense

@@ -15,6 +15,9 @@ def user_directory_path(instance, filename):
 class Creator(models.Model):
     creator = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.creator
+
 ####
 
 # CREATE TABLE users (
@@ -60,8 +63,11 @@ class Work(models.Model):
     type = models.CharField(max_length=255, choices=TYPES)
     publisher = models.CharField(max_length=255, null=True)
     synopsis = models.TextField(null=True)
-    released = models.DateTimeField()
+    released = models.DateField()
     img_link = models.URLField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
 
 ####
 
@@ -73,6 +79,9 @@ class Work(models.Model):
 
 class Genre(models.Model):
     genre = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.genre
 
 
 # COM FOREIGNKEY
