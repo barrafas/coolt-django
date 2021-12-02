@@ -74,7 +74,7 @@ for id in top_ids:
         avg_rating = float(series['vote_average'])
         qtd_rating = int(series['vote_count'])
         a_series = pd.Series(
-            [title, 'filme', '-', overview, released, img_url, avg_rating, qtd_rating], index=works.columns)
+            [title, 'serie', '-', overview, released, img_url, avg_rating, qtd_rating], index=works.columns)
         works = works.append(a_series, ignore_index=True)
         filt_id = (works['name'] == title)
         movie_id = works.loc[filt_id].index[0]
@@ -97,8 +97,8 @@ for id in top_ids:
 
 
 # Exportando
-works.to_csv('works2.csv', encoding='utf-8')
-genres_df.to_csv('genres2.csv', encoding='utf-8')
-creators_df.to_csv('creators2.csv', encoding='utf-8')
-work_genres.to_csv('work_genres2.csv', encoding='utf-8')
-work_creators.to_csv('work_creators2.csv', encoding='utf-8')
+works.to_csv('works.csv', encoding='utf-8')
+genres_df.to_csv('genres.csv', encoding='utf-8')
+creators_df.to_csv('creators.csv', encoding='utf-8')
+work_genres.to_csv('work_genres.csv', encoding='utf-8')
+work_creators.to_csv('work_creators.csv', encoding='utf-8')
