@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+
+{% block headinfo %}    
+<!-- Nosso CSS (SASS) -->
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+<!--Atualiza o título da página-->
+<title>Coolt - Sobre</title>
+<!-- Adiciona o favicon-->
+<link rel="icon" href="{% static 'img/tako2.png' %}">
+<!-- Carrega as fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block content %} 
+    {% include 'nav.html' %}
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-6">
+
+        </div>
+        
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <div class="main-right col-md-6">
+       
+        </div>
+
+        {{ barplot|safe }}
+       
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
