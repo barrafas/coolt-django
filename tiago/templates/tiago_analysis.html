@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+{% block headinfo %}
+  <!-- Nosso CSS (SASS) -->
+  <link href="{% static 'css/work_tiago.css' %}" rel="stylesheet">
+  <!--Atualiza o título da página-->
+  <title>Dashboard do Usuário</title>
+  <!-- Adiciona o favicon-->
+  <link rel="icon" href="{% static 'img/tako2.png' %}">
+{% endblock %}
+
+
+{% block content %}
+    {% include 'nave.html' %}
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (4/12) do espaço vertical da página que os contêiners irão ocupar -->
+            <div class="main-center col-md-4">
+                <div class="description">
+                    <h2>Sua obra favorita: </br> {{ favorite.name }} </h2>
+                    
+                    <img id='work-pic' class='d-flex work-pic' src="{{ favorite.img_link }}" alt="{{ favorite.name }}">
+                    
+                    <ul class="list-group">
+                        <li class="list-group-item text-center"> <b>Sua nota: </b>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </li>
+                        <li class="list-group-item text-center text-ellipsis-8"> 
+                            {{ favorite.synopsis }}
+                        </li>
+                    </ul>
+
+        
+                    <hr class="border-5 border-top">
+        
+                    <h3>Gêneros</h3>
+                    <div id="genres">
+                      {% for genre in favorite_genres %}
+                        <span class="badge rounded-pill bg-primary">{{ genre }}</span>
+                      {% empty %}
+                      <span class="badge rounded-pill bg-primary">Desculpa, não há gêneros salvos</span>
+                      {% endfor %}
+                    </div>
+        
+                    <hr class="border-5 border-top">
+        
+                    <h3>Recomendações</h3>
+                
+                    <div id="series">
+                        <div class="row">
+                            <div class="col-sm-4"><img src="{{ favorites|random }}" alt="recomendação 1"></div>
+                            <div class="col-sm-4"><img src="{{ favorites|random }}" alt="recomendação 2"></div>
+                            <div class="col-sm-4"><img src="{{ favorites|random }}" alt="recomendação 3"></div>
+                        </div>
+                    </div>    
+                </div>         
+                
+            </div>    
+        
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores (8/12) -->
+            <div class="main-right col-md-8">
+                <div class="rightside">
+                    <h2>Dashboard de {{ usertag|capfirst }} - {{ work_type }}</h2>
+                    <div class="review">
+                      {{ hist|safe }}
+                    </div>
+
+                    <hr class="border-2 border-top">
+
+                    <div class="review">
+                      <h3>Gêneros mais comuns em suas obras favoritas</h3>
+                      <p>
+                        {{ donut|safe }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
