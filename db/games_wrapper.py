@@ -7,7 +7,7 @@ work_genres = pd.read_csv('work_genres.csv', index_col=0)
 work_creators = pd.read_csv('work_creators.csv', index_col=0)
 
 # Limpando games_info
-games_info = pd.read_csv('steam.csv.zip', compression='zip').head(100)
+games_info = pd.read_csv('external/steam.csv.zip', compression='zip').head(100)
 games_info = games_info.drop(columns=['english', 'platforms', 'required_age', 'categories', 'steamspy_tags',
                                       'achievements', 'median_playtime', 'average_playtime', 'owners', 'price'])
 
@@ -22,11 +22,11 @@ games_info = games_info.rename(columns={'appid': 'steam_appid'})
 ######
 
 games_desc = pd.read_csv(
-    'steam_description_data.csv.zip', compression='zip').head(100)
+    'external/steam_description_data.csv.zip', compression='zip').head(100)
 games_desc = games_desc.drop(
     columns=['detailed_description', 'about_the_game'])
 
-games_media = pd.read_csv('steam_media_data.csv.zip',
+games_media = pd.read_csv('external/steam_media_data.csv.zip',
                           compression='zip').head(100)
 games_media = games_media.drop(columns=['screenshots', 'background', 'movies'])
 
