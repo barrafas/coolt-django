@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 top_ids = set()
 
 # SCRAPING DOS TOP 100 ID
-for limit in (0,):
+for limit in (0, 50):
     html_text = requests.get(
         f'https://myanimelist.net/topanime.php?limit={limit}').text
 
@@ -18,8 +18,8 @@ for limit in (0,):
         top_ids.add(id)
 
 # CRIANDO DATA FRAMES
-works = pd.DataFrame([],
-                     columns=['name', 'type', 'publisher', 'synopsis', 'released', 'img_link'])
+works = pd.DataFrame(columns=['name', 'type', 'publisher',
+                     'synopsis', 'released', 'img_link', 'avg_rating', 'qtd_rating'])
 genres_df = pd.DataFrame(columns=['genre'])
 creators_df = pd.DataFrame(columns=['creator'])
 work_genres = pd.DataFrame(columns=['work_id', 'genre_id'])
@@ -69,8 +69,12 @@ for id in top_ids:
         released = anime['aired']['from'].strip(
             'T00:00:00+00:00')  # REMOVE O HORÁRIO
         img_url = anime['image_url']
+        if not (anime['score'] or anime['scored_by']):
+            continue
+        avg_rating = float(anime['score'])
+        qtd_rating = int(anime['scored_by'])
         a_series = pd.Series(
-            [title, 'anime', publisher, overview, released, img_url], index=works.columns)
+            [title, 'anime', publisher, overview, released, img_url, avg_rating, qtd_rating], index=works.columns)
         works = works.append(a_series, ignore_index=True)
         filt_id = (works['name'] == title)
         anime_id = works.loc[filt_id].index[0]
@@ -84,7 +88,7 @@ for id in top_ids:
         for producer in producers:
             producer_id = find_creator(producer['name'])
             wc_series = pd.Series([anime_id, producer_id],
-                                  index=work_genres.columns)
+                                  index=work_creators.columns)
             work_creators = work_creators.append(wc_series, ignore_index=True)
 
     except Exception as e:

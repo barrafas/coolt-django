@@ -1,0 +1,666 @@
+id,creator
+0,Warner Bros. Japan
+1,KlockWorx
+2,BS Fuji
+3,Hakuhodo DY Music & Pictures
+4,Shogakukan
+5,Aniplex
+6,Kodansha
+7,Delfi Sound
+8,Frontier Works
+9,Media Factory
+10,Movic
+11,AT-X
+12,Kadokawa Pictures Japan
+13,Nitroplus
+14,IRMA LA DOUCE
+15,Dentsu
+16,Fuji TV
+17,Kadokawa
+18,TV Tokyo
+19,Nihon Ad Systems
+20,Hakusensha
+21,Sony Music Entertainment
+22,Toei Animation
+23,Kadokawa Shoten
+24,Sega
+25,TV Tokyo Music
+26,Audio Tanaka
+27,Square Enix
+28,Mainichi Broadcasting System
+29,Studio Moriken
+30,VAP
+31,Konami
+32,Ashi Production
+33,Nippon Television Network
+34,Shueisha
+35,bilibili
+36,BeDream
+37,Notes
+38,Bandai
+39,Production I.G
+40,Pony Canyon
+41,Techno Sound
+42,Pony Canyon Enterprise
+43,Shogakukan-Shueisha Productions
+44,Tokuma Shoten
+45,Lantis
+46,Rakuonsha
+47,ABC Animation
+48,Seikaisha
+49,Medicos Entertainment
+50,TOHO animation
+51,TAP
+52,Bandai Spirits
+53,Cyclone Graphics
+54,Kyoraku Industrial Holdings
+55,Bandai Visual
+56,Bandai Namco Entertainment
+57,Hakuhodo DY Media Partners
+58,NHK
+59,JR East Marketing & Communications
+60,Half H.P Studio
+61,MAGES.
+62,DeNA
+63,Asatsu DK
+64,Banpresto
+65,Good Smile Company
+66,TBS
+67,Animation Do
+68,Victor Entertainment
+69,Trinity Sound
+70,Miracle Robo
+71,Studio Jack
+72,d-rights
+73,Audio Highs
+74,TV Asahi
+75,Animax
+76,Twin Engine
+77,Shochiku
+78,Science SARU
+79,Madhouse
+80,Yomiuri Telecasting
+81,Toho
+82,Hiroshima Television
+83,DAX Production
+84,King Records
+85,Tokyo MX
+86,Nagoya Broadcasting Network
+87,BS11
+88,Miracle Bus
+89,Mad Box
+90,Tencent Penguin Pictures
+91,Avex Entertainment
+92,Marvelous
+93,SKY Perfect Well Think
+94,Takeshobo
+95,Sony Music Communications
+96,Kadokawa Media House
+97,Cygames
+98,Kanetsu Investment
+99,Global Solutions
+100,Quaras
+101,Kitty Films
+102,Tokuma Japan Communications
+103,dugout
+104,Sumzap
+105,Starchild Records
+106,TV Osaka
+107,Avex Pictures
+108,TMS Music
+109,Docomo Anime Store
+110,NewGin
+111,Crunchyroll SC Anime Fund
+112,Asmik Ace
+113,Toy's Factory
+114,Sakura Create
+115,Annapuru
+116,CA-Cygames Anime Fund
+117,Tohokushinsha Film Corporation
+118,Fujipacific Music
+119,Sound Team Don Juan
+120,Amuse
+121,voque ting
+122,Marvel Studios
+123,Pixar
+124,Walt Disney Pictures
+125,Lifetime
+126,Dune Entertainment
+127,Lightstorm Entertainment
+128,20th Century Fox
+129,Ingenious Media
+130,PISF
+131,Akson Studio
+132,Paramount
+133,Entertainment One
+134,Kerner Entertainment Company
+135,Scholastic Entertainment
+136,New Republic Pictures
+137,Walden Media
+138,Universal Pictures
+139,Blinding Edge Pictures
+140,Perfect World Pictures
+141,Marvel Enterprises
+142,Columbia Pictures
+143,Sony Pictures
+144,Laura Ziskin Productions
+145,Marvel Entertainment
+146,Pascal Pictures
+147,Hammerstone Studios
+148,Maze Pictures
+149,Rimsky Productions
+150,Macaia Film
+151,Almost Never Films
+152,Berlanti Productions
+153,21 Laps Entertainment
+154,Maximum Effort
+155,Lit Entertainment Group
+156,StudioCanal
+157,France 2 Cinéma
+158,Chi-Fou-Mi Productions
+159,Di Bonaventura Pictures
+160,Closest to the Hole Productions
+161,Leverage Entertainment
+162,Zagtoon
+163,Method Animation
+164,SAMG Animation
+165,Norman Studio Works
+166,The Walt Disney Company France
+167,TF1
+168,Mediawan
+169,Télé-Québec
+170,Fantawild Animation
+171,Gloob
+172,Original Film
+173,One Race
+174,Perfect Storm Entertainment
+175,ZXY MOVIES
+176,STX Films
+177,Studio Babelsberg
+178,Canal+
+179,Ciné+
+180,The Picture Company
+181,Avi Arad Productions
+182,Matt Tolmach Productions
+183,Tencent Pictures
+184,Spin Master
+185,Nickelodeon Movies
+186,Mikros Image
+187,Motion Picture Corporation of America
+188,Brad Krevoy Television
+189,20th Century Studios
+190,Hutch Parker Entertainment
+191,Gracie Films
+192,20th Television
+193,Voltage Pictures
+194,Offspring Entertainment
+195,Frayed Pages Entertainment
+196,Wattpad
+197,Open Road Films
+198,O2 Filmes
+199,Noruz Films (I)
+200,Mandalay Pictures
+201,Wonder Street
+202,Sony Pictures Worldwide Acquisitions (SPWA)
+203,Millennium Films
+204,Arthur Sarkissian Productions
+205,Campbell Grobman Films
+206,Lionsgate
+207,Amblin Entertainment
+208,ImageMovers
+209,Misher Films
+210,Reliance Entertainment
+211,Constantin Film
+212,Tea Shop & Film Company
+213,Davis Films
+214,The Fyzz
+215,Screen Gems
+216,Atomic Monster
+217,Broken Road Productions
+218,New Line Cinema
+219,Overbrook Entertainment
+220,Scott Free Productions
+221,Pearl Street Films
+222,TSG Entertainment
+223,Flynn Picture Company
+224,Seven Bucks Productions
+225,Legendary Pictures
+226,"Bad Version, Inc."
+227,Warner Bros. Pictures
+228,Miramax
+229,Metro-Goldwyn-Mayer
+230,Toff Guy Films
+231,CAA Media Finance
+232,Getaway Pictures
+233,Phiphen Pictures
+234,SE Film Production
+235,SUNRISE
+236,DC Entertainment
+237,DC Films
+238,Atlas Entertainment
+239,DC Comics
+240,The Safran Company
+241,Bron Studios
+242,BermanBraun
+243,Cinesite Animation
+244,Nitrogen Studios Canada
+245,Trois Brigands Productions
+246,F Comme Film
+247,Ciné@
+248,ARTE France Cinéma
+249,ARTE
+250,Cinémage 11
+251,Cofinova 13
+252,Freckle Films
+253,Vertical Entertainment
+254,Blueprint Pictures
+255,LStar Capital
+256,Ciudadano Ciskul
+257,El Tesoro de Drake AIE
+258,Telecinco Cinema
+259,Think Studio
+260,Saban Films
+261,Lord Miller Productions
+262,Sony Pictures Animation
+263,Jagged Edge Productions
+264,Warner Bros. Animation
+265,Blue Ribbon Content
+266,308 Enterprises
+267,BondIt Media Capital
+268,Buffalo 8 Productions
+269,Eon Productions
+270,United Artists
+271,Creativ Studios
+272,High Fliers Films
+273,Warner Animation Group
+274,SpringHill Entertainment
+275,Proximity Media
+276,Romulus Entertainment
+277,Entertainment 360
+278,Rhea Films
+279,Thunder Road
+280,Aloe Entertainment
+281,Bohemia Media
+282,Head Gear Films
+283,Metrol Technology
+284,Hercules Film Fund
+285,Skydance Media
+286,Hasbro
+287,DreamWorks Animation
+288,Ambient Entertainment
+289,Rothkirch Cartoon Film
+290,Timeless Films
+291,Walt Disney Animation Studios
+292,Radar Films
+293,Logical Pictures
+294,Apollo Films
+295,uMedia
+296,Forecast Pictures
+297,Screen Flanders
+298,OCS
+299,Wallimage
+300,Tax Shelter du Gouvernement Fédéral Belge
+301,Investisseurs Tax Shelter
+302,CNC
+303,Focus Features
+304,Film4 Productions
+305,Working Title Films
+306,Big Talk Productions
+307,Complete Fiction
+308,The Stone Quarry
+309,Access Entertainment
+310,Ethea Entertainment
+311,CalMaple Films
+312,Pantaleon Films
+313,Film United
+314,Lemon Films
+315,Videocine
+316,HMV Digital China Group Limited
+317,Tecmo
+318,Sun Entertainment Culture
+319,Guangdong Sublime Media
+320,Beijing Lajin Film
+321,Khorgas New Splendid Entertainment
+322,Er Dong Pictures (Beijing) Company
+323,Beijing New Splendid Entertainment
+324,China Star Movie Limited
+325,Deshe Film
+326,Film Entertainment Power
+327,Videosonic Studios
+328,BlackScreen Entertainment
+329,RainMaker Films
+330,Yale Productions
+331,The Machine Room
+332,Post Film
+333,Briarcliff Entertainment
+334,RSVP Movies
+335,Ram Madhvani Films
+336,Globalgate Entertainment
+337,Lotte Entertainment
+338,Lotte Cultureworks
+339,Buffalo 8
+340,The Exchange
+341,北京宝庆影业传媒有限公司
+342,ufotable
+343,STUDIO MAUSU
+344,Star Thrower Entertainment
+345,The Montecito Picture Company
+346,Ghost Corps
+347,"Yellow, Black & White"
+348,The Walt Disney Company CIS
+349,Cinema Fund
+350,Russia-1
+351,Non-Stop Productions
+352,DK Entertainment
+353,Central Partnership
+354,KIT Film Studio
+355,Real Fiction
+356,Phantom Four
+357,QS Films
+358,Iney Productions
+359,Artkinoclub
+360,Blumhouse Productions
+361,Home Again Productions
+362,Rough House Pictures
+363,Trancas International Films
+364,BONES
+365,DENTSU
+366,Nippon Television Network Corporation
+367,Sony Music Entertainment (Japan)
+368,Yomiuri Telecasting Corporation
+369,Toho Co.
+370,Toho Music
+371,Davis Entertainment
+372,Zaftig Films
+373,Studio Deen
+374,Pierrot
+375,Highland Film Group
+376,El Ride Productions
+377,Northern Ireland Screen
+378,Moffen Media
+379,23ten
+380,Baird Films
+381,Source Management + Production
+382,Great Point Media
+383,Remarkable Television
+384,Endemol Shine UK
+385,Telemundo Global Studios
+386,ABC Studios
+387,3AD
+388,Sony Pictures Television Studios
+389,Skydance Television
+390,Wild Atlantic Pictures
+391,Latina Pictures
+392,Kripke Enterprises
+393,Supernatural Films
+394,Wonderland Sound and Vision
+395,Warner Bros. Television
+396,CBS Television Studios
+397,Lionsgate Television
+398,3Pas Studios
+399,The Tannenbaum Company
+400,AMC Networks
+401,Skybound Entertainment
+402,Alloy Entertainment
+403,My So-Called Company
+404,Pampa Films
+405,Gloriamundi Producciones
+406,WETA
+407,MGM Television
+408,MacNeil-Lehrer Productions
+409,Corazón Films
+410,Avanti Groupe
+411,Dreamscape Entertainment Television
+412,Imagine Television
+413,Universal Television
+414,South Park Studios
+415,Comedy Central
+416,Braniff
+417,Comedy Partners
+418,Amazon Studios
+419,Bound Entertainment
+420,Kakao Entertainment
+421,YG Studioplex
+422,Dark Circle Pictures
+423,Fuji Television Network
+424,Climax Studios
+425,Tiger Aspect Productions
+426,BBC Studios
+427,Caryn Mandabach Productions
+428,Screen Yorkshire
+429,Sound Box
+430,Mini Art
+431,Fizz Sound Creation
+432,Wolf Films
+433,USA Network
+434,NBCUniversal
+435,Shaw Media
+436,World 2000 Entertainment
+437,Take 5 Productions
+438,Fox Productions
+439,Aggressive Mediocrity
+440,Jerry Bruckheimer Television
+441,Williams Street
+442,Harmonius Claptrap
+443,Justin Roiland's Solo Vanity Card Productions
+444,Starburns Industries
+445,Green Portal Productions
+446,Rhayuela Films
+447,Califon Productions
+448,Columbia TriStar Television
+449,Global Entertainment Productions
+450,Company Meidien KG
+451,Columbia Broadcasting System (CBS)
+452,National Broadcasting Company
+453,Merv Griffin Enterprises
+454,Siren Pictures
+455,Bonanza Productions
+456,Radar Pictures
+457,IWOT Productions
+458,Little Island Productions
+459,BTF media
+460,Dhana Media
+461,Outerbanks Entertainment
+462,MAPPA
+463,TOHO Animation
+464,MBS
+465,Jujutsu Kaisen Production Committee
+466,Shashi Sumeet Productions
+467,Caracol Televisión
+468,Director's Kut Productions
+469,Boat Rocker Studios
+470,Genre Films
+471,FremantleMedia North America
+472,FoxTelecolombia
+473,Telemundo Studios
+474,Studio Santa Claus Entertainment
+475,Vancouver Media
+476,Central Globo de Produção
+477,Primrose Hill Productions
+478,Ludo Studio
+479,Dutch Oven
+480,Hypnotic
+481,UCP
+482,Keshet Studios
+483,Valhalla Motion Pictures
+484,Circle of Confusion
+485,Showtime Networks
+486,Clyde Phillips Productions
+487,John Goldwyn Productions
+488,The Colleton Company
+489,Cockcrow Entertainment & Shaika Films
+490,David Kirschner Productions
+491,Eat the Cat
+492,A+E Studios
+493,Teleset
+494,101 Studios
+495,Bosque Ranch Productions
+496,The Linson Company
+497,Treehouse Films
+498,Hurwitz & Schlossberg Productions
+499,High Bridge Entertainment
+500,Gran Via Productions
+501,Revolution Sun Studios
+502,Television 360
+503,Generator Entertainment
+504,Bighead Littlehead
+505,20th Century Fox Television
+506,Far Field Productions
+507,Josephson Entertainment
+508,Darkwoods Productions
+509,Bad Hat Harry Productions
+510,Heel & Toe Films
+511,Shore Z Productions
+512,MoPo Productions
+513,Paramount Television Studios
+514,The Mark Gordon Company
+515,ShondaLand
+516,Touchstone Television
+517,Fortiche Production
+518,Riot Games
+519,Big Synergy Media
+520,Argos Comunicación
+521,Archie Comics
+522,The Curiosity Company
+523,20th Television Animation
+524,Eleven Films
+525,Ryan Murphy Productions
+526,Reamworks
+527,TVA Productions
+528,UFA Show & Factual
+529,OLM
+530,HALF H·P STUDIO
+531,Productions 350°
+532,La Presse Télé
+533,Bell-Phillip Television Productions
+534,Valve
+535,Gearbox Software
+536,Valve;Hidden Path Entertainment
+537,Mark Healey
+538,Tripwire Interactive
+539,Ritual Entertainment
+540,Introversion Software
+541,Sonalysts
+542,Malfador Machinations
+543,Strategy First
+544,Arkane Studios
+545,Reality Pump Studios
+546,id Software
+547,RavenSoft / id Software
+548,Xatrix Entertainment
+549,Rogue Entertainment
+550,Raven Software
+551,Outerlight Ltd.
+552,Frozenbyte
+553,"CINEMAX, s.r.o."
+554,Black Element
+555,Troika Games
+556,Neversoft
+557,Infinity Ward
+558,Infinity Ward;Aspyr (Mac)
+559,Gray Matter Studios
+560,Eugen Systems
+561,Iocaine Studios
+562,Bohemia Interactive
+563,Egosoft
+564,Bugbear Entertainment
+565,Techland
+566,1C Entertainment
+567,Katauri Interactive
+568,Metamorf
+569,Kheops Studio
+570,Mindware Studios
+571,"PopCap Games, Inc."
+572,"Retro64, Inc."
+573,SpinTop Games
+574,Suzanne Collins
+575,"Anne Frank, Eleanor Roosevelt (Introduction), é­æ¸ç² (Translator), Barbara Mooyaart-Doubleday (Translator)"
+576,Louisa May Alcott
+577,John Green
+578,L.M. Montgomery
+579,Rick Riordan
+580,Lois Lowry
+581,Cassandra Clare
+582,Stephen Chbosky
+583,Madeleine L'Engle
+584,Veronica Roth
+585,"Cassandra Clare, Rita Sussekind (Translator)"
+586,Richelle Mead
+587,James Dashner
+588,Markus Zusak
+589,Becca Fitzpatrick
+590,Rainbow Rowell
+591,Kristin Cashore
+592,Stephanie Perkins
+593,Sarah J. Maas
+594,Sarah Dessen
+595,Jennifer L. Armentrout
+596,Laini Taylor
+597,Diana Wynne Jones
+598,Katie McGarry
+599,C.C. Hunter
+600,Kerstin Gier
+601, Sarah J. Maas
+602,S.E. Hinton
+603,Marie Lu
+604,Betty Smith
+605,Marissa Meyer
+606,"Ned Vizzini, Rachel Cohn (Foreword)"
+607,James Patterson
+608,Cynthia Hand
+609,Veronica Rossi
+610,Leigh Bardugo
+611,Huntley Fitzpatrick
+612,Maggie Stiefvater
+613,Victoria Aveyard
+614,Jandy Nelson
+615,Ellen Hopkins
+616,Wendy Higgins
+617,Andrea Cremer
+618,Gayle Forman
+619,Amy Plum
+620,Benjamin Alire SÃ¡enz
+621,Julie Kagawa
+622,Josephine Angelini
+623,Elizabeth Wein
+624,Rachel Hartman
+625,Anna Banks
+626,Melina Marchetta
+627,"J.K. Rowling, Mary GrandPrÃ© (Illustrator)"
+628,Gena Showalter
+629,Marie Rutkoski
+630,Jay Asher
+631,Lauren Oliver
+632,Kiera Cass
+633,Tahereh Mafi
+634,Simone Elkeles
+635,Michelle Hodkin
+636,Susan Ee
+637,Rick Yancey
+638,Philip Pullman
+639,Colleen Hoover
+640,Neal Shusterman
+641,Kelley Armstrong
+642,Jenny Han
+643,"Sherman Alexie, Ellen Forney (Illustrator)"
+644,David Levithan
+645,Alexandra Bracken
+646,Maria V. Snyder
+647,Garth Nix
+648,"Markus Zusak, Emmanuel Pailler"
+649,Morgan Matson
+650,Patrick Ness
+651,Pierce Brown
+652,Jennifer Niven
+653,Brandon Sanderson
+654,"Maggie Stiefvater, Carina Jansson (Translator)"
+655,Tamora Pierce
+656,Cinda Williams Chima
+657,Abbi Glines
+658,Jennifer Brown
+659,Sabaa Tahir
+660,Nancy Farmer
+661,Colleen Houck
+662,Jessica Park
+663,Suzanne Young
+664,Jennifer A. Nielsen
