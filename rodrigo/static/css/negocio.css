@@ -267,5 +267,14 @@ body {
     display: block;
   }
 
+#animeplot, #livroplot, #filmeplot, #jogoplot, #serieplot {
+  display: none;
+}
+
+#animeicon, #livroicon, #filmeicon, #jogoicon, #serieicon {
+  display: none;
+}
+
+
 
   /*# sourceMappingURL=profile.css.map */

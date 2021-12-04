@@ -44,7 +44,7 @@ def negocio(request):
     fig1.update_yaxes(fixedrange=True, title='Notas')
 
 
-    animebox = pio.to_html(fig1, full_html=False, default_height=400, default_width=800)
+    animebox = pio.to_html(fig1, full_html=False )
 
     # Criação do boxplot de livro
     fig2 = px.box(livros, x='released', y='avg_rating', color_discrete_sequence=['DarkOrange'], range_x=[2000,2016])
@@ -62,7 +62,7 @@ def negocio(request):
     fig2.update_yaxes(fixedrange=True, title='Notas')
 
 
-    livrobox = pio.to_html(fig2, full_html=False, default_height=400, default_width=800)
+    livrobox = pio.to_html(fig2, full_html=False )
 
     # Criação do boxplot de filme
     fig3 = px.box(filmes, x='released', y='avg_rating', color_discrete_sequence=['LimeGreen'], range_x=[2000,2016])
@@ -80,7 +80,7 @@ def negocio(request):
     fig3.update_yaxes(fixedrange=True, title='Notas')
 
 
-    filmebox = pio.to_html(fig3, full_html=False, default_height=400, default_width=800)
+    filmebox = pio.to_html(fig3, full_html=False )
 
     # Criação do boxplot de jogo
     fig4 = px.box(jogos, x='released', y='avg_rating', color_discrete_sequence=['RoyalBlue'], range_x=[2000,2016])
@@ -98,7 +98,7 @@ def negocio(request):
     fig4.update_yaxes(fixedrange=True, title='Notas')
 
 
-    jogobox = pio.to_html(fig4, full_html=False, default_height=400, default_width=800)
+    jogobox = pio.to_html(fig4, full_html=False )
 
     # Criação do boxplot de série
     fig5 = px.box(series, x='released', y='avg_rating', color_discrete_sequence=['crimson'], range_x=[2000,2016])
@@ -116,7 +116,7 @@ def negocio(request):
     fig5.update_yaxes(fixedrange=True, title='Notas')
 
 
-    seriebox = pio.to_html(fig5, full_html=False, default_height=400, default_width=800)
+    seriebox = pio.to_html(fig5, full_html=False )
 
     # Cria os contextos de acordo com a forma em html dos boxplots
     context = {

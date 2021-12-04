@@ -33,24 +33,24 @@
             </div>
             <hr class="border-5 border-top">
             <!-- Divisórias que dependem dos botões-->
-            <div id="animeicon" style="display: none;">
+            <div id="animeicon"  >
                 <h2>Animes</h2>
                 <img   class='d-flex imgsize' src="{% static 'img/animesicon.png'%}" alt="Animes">  
                 
             </div>
-            <div id="livroicon" style="display: none;">
+            <div id="livroicon"  >
                 <h2>Livros</h2>
                 <img  class='d-flex' src="{% static 'img/booksicon.png'%}"  alt="Livros">   
             </div>
-            <div id="filmeicon" style="display: none;">
+            <div id="filmeicon"  >
                 <h2>Filmes</h2>
                 <img   class='d-flex' src="{% static 'img/moviesicon.png'%}" alt="Filmes">   
             </div>
-            <div id="jogoicon" style="display: none;">
+            <div id="jogoicon"  >
                 <h2>Jogos</h2>
                 <img   class='d-flex' src="{% static 'img/gamesicon.png'%}" alt="Jogos">   
             </div>
-            <div id="serieicon" style="display: none;">
+            <div id="serieicon"  >
                 <h2>Séries</h2>
                 <img   class='d-flex' src="{% static 'img/seriesicon.png'%}" alt="Séries">   
             </div>
@@ -96,22 +96,24 @@
             <hr class="border-5 border-top">
             <!-- Será preenchido pelo JS. -->
             <div>
+            <center>
             <!-- Boxplots que aparecerão de acordo com os botões-->
-            <div id="animeplot" style="display: none;">    
+            <div id="animeplot">    
                 {{ anime|safe }}
             </div>
-            <div id="livroplot" style="display: none;">
+            <div id="livroplot">
                 {{ livro|safe }}
             </div>
-            <div id="filmeplot" style="display: none;">
+            <div id="filmeplot"  >
                 {{ filme|safe }}
             </div>
-            <div id="jogoplot" style="display: none;">
+            <div id="jogoplot"  >
                 {{ jogo|safe }}
             </div>
-            <div id="serieplot" style="display: none;">
+            <div id="serieplot"  >
                 {{ serie|safe }}
             </div>
+        </center>
             </div>
         </div>
             </div>
