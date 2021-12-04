@@ -1,16 +1,20 @@
 import requests
 import pandas as pd
 
-
+# Cria uma lista com todos os gêneros e seus ids
 genres_list = requests.get(
     'http://api.themoviedb.org/3/genre/tv/list?api_key=b33b8cf81183cc38fb69365485a59447').json()['genres']
+# Inicializa um dicionário para ser tradutor de id para nome
 genres_dic = dict()
 
+# Cria o dicionário que traduz de id para nome
 for item in genres_list:
     genres_dic[item['id']] = item['name']
 
+# Set para os top 100 ids
 top_ids = set()
 
+# Faz o scraping das 6 páginas do tmdb (6x20)
 for page in range(1, 6):
     top_series = requests.get(
         f'https://api.themoviedb.org/3/tv/popular?language=pt-BR&page={page}&api_key=b33b8cf81183cc38fb69365485a59447').json()
@@ -18,18 +22,15 @@ for page in range(1, 6):
         top_ids.add(int(series['id']))
 
 
-# RECUPERANDO DATA FRAMES
+# Recuperando dataframes
 works = pd.read_csv('works.csv', index_col=0)
 genres_df = pd.read_csv('genres.csv', index_col=0)
 creators_df = pd.read_csv('creators.csv', index_col=0)
 work_genres = pd.read_csv('work_genres.csv', index_col=0)
 work_creators = pd.read_csv('work_creators.csv', index_col=0)
 
-print(works)
 
-# ACHA OU ADICIONA O ID DOS GÊNEROS E CRIADORES
-
-
+# Acha ou adiciona o id do criador
 def find_creator(name):
     global creators_df
     filt = (creators_df['creator'] == name)
@@ -43,6 +44,7 @@ def find_creator(name):
     return record[0]
 
 
+# Acha ou adiciona o id do gênero
 def find_genre(name):
     global genres_df
     filt = (genres_df['genre'] == name)
@@ -56,12 +58,13 @@ def find_genre(name):
     return record[0]
 
 
-# ADICIONA CADA ANIME
+# Itera sobre cada id e captura/adiciona os dados da série ao df
 for id in top_ids:
+    # Captura o json
     series = requests.get(
         f'https://api.themoviedb.org/3/tv/{id}?language=pt-BR&api_key=b33b8cf81183cc38fb69365485a59447').json()
     try:
-        # ANIMES PODEM NÃO TER TÍTULO EM EN
+        # Séries podem não ter título em inglês
         title = series['name'] if series['name'] else series['original_name']
         genres = series['genres']
         producers = series['production_companies']
@@ -73,13 +76,19 @@ for id in top_ids:
             series['poster_path'] if series['poster_path'] else ''
         avg_rating = float(series['vote_average'])
         qtd_rating = int(series['vote_count'])
+
+        # Adiciona a linha no df
         a_series = pd.Series(
             [title, 'serie', '-', overview, released, img_url, avg_rating, qtd_rating], index=works.columns)
         works = works.append(a_series, ignore_index=True)
+
+        # Encontra o id do work
         filt_id = (works['name'] == title)
         movie_id = works.loc[filt_id].index[0]
         print("ID:", movie_id)
         print(title)
+
+        # Adiciona os gêneros e os produtores em suas devidas tabelas/relações.
         for genre in genres:
             genre_id = find_genre(genres_dic[genre['id']])
             wg_series = pd.Series([movie_id, genre_id],

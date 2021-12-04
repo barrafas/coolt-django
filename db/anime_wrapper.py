@@ -2,10 +2,10 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-# SET PARA O TOP 100 ID
+# Set para os top 100 ID
 top_ids = set()
 
-# SCRAPING DOS TOP 100 ID
+# Scraping dos top 100 ID
 for limit in (0, 50):
     html_text = requests.get(
         f'https://myanimelist.net/topanime.php?limit={limit}').text
@@ -17,16 +17,16 @@ for limit in (0, 50):
         id = element['id'].strip('#area')
         top_ids.add(id)
 
-# CRIANDO DATA FRAMES
+# Criando dataframes
 works = pd.DataFrame(columns=['name', 'type', 'publisher',
                      'synopsis', 'released', 'img_link', 'avg_rating', 'qtd_rating'])
 genres_df = pd.DataFrame(columns=['genre'])
 creators_df = pd.DataFrame(columns=['creator'])
 work_genres = pd.DataFrame(columns=['work_id', 'genre_id'])
 work_creators = pd.DataFrame(columns=['work_id', 'creator_id'])
-# ACHA OU ADICIONA O ID DOS GÊNEROS E CRIADORES
 
 
+# Acha ou adiciona o id do criador
 def find_creator(name):
     global creators_df
     filt = (creators_df['creator'] == name)
@@ -40,6 +40,7 @@ def find_creator(name):
     return record[0]
 
 
+# Acha ou adiciona o id do gênero
 def find_genre(name):
     global genres_df
     filt = (genres_df['genre'] == name)
@@ -53,33 +54,49 @@ def find_genre(name):
     return record[0]
 
 
-# ADICIONA CADA ANIME
+# Itera sobre cada id e captura/adiciona os dados do anime ao df
 for id in top_ids:
     anime = requests.get(f'https://api.jikan.moe/v3/anime/{id}/').json()
     try:
-        # ANIMES PODEM NÃO TER TÍTULO EM EN
+        # Animes podem não ter título em inglês
         title = anime['title_english'] if anime['title_english'] else anime['title']
         genres = anime['genres']
         producers = anime['producers']
         overview = anime['synopsis']
-        if anime['studios'][0]['name']:  # ANIMES PODEM NÃO TER STUDIO
+
+        ####
+
+        # Animes podem não ter estudio
+        if anime['studios'][0]['name']:
             publisher = anime['studios'][0]['name']
         else:
             publisher = ''
+
+        # Remove o horário
         released = anime['aired']['from'].strip(
-            'T00:00:00+00:00')  # REMOVE O HORÁRIO
+            'T00:00:00+00:00')
+
         img_url = anime['image_url']
+
+        # Pula iteração caso não tiver score
         if not (anime['score'] or anime['scored_by']):
             continue
+
         avg_rating = float(anime['score'])
         qtd_rating = int(anime['scored_by'])
+
+        # Adiciona ao dataframe
         a_series = pd.Series(
             [title, 'anime', publisher, overview, released, img_url, avg_rating, qtd_rating], index=works.columns)
         works = works.append(a_series, ignore_index=True)
+
+        # Encontra o id do work
         filt_id = (works['name'] == title)
         anime_id = works.loc[filt_id].index[0]
         print("ID:", anime_id)
         print(title)
+
+        # Adiciona os gêneros e os produtores em suas devidas tabelas/relações.
         for genre in genres:
             genre_id = find_genre(genre['name'])
             wg_series = pd.Series([anime_id, genre_id],
