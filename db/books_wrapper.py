@@ -1,14 +1,17 @@
 import pandas as pd
 
+# Recuperando dataframes
 works = pd.read_csv('works.csv', index_col=0)
 genres_df = pd.read_csv('genres.csv', index_col=0)
 creators_df = pd.read_csv('creators.csv', index_col=0)
 work_genres = pd.read_csv('work_genres.csv', index_col=0)
 work_creators = pd.read_csv('work_creators.csv', index_col=0)
 
+# Adquirindo df pelo csv
 books = pd.read_csv('external/books.csv', encoding='ISO-8859-1')
 
 
+# Acha ou adiciona o id do criador
 def find_creator(name):
     global creators_df
     filt = (creators_df['creator'] == name)
@@ -22,6 +25,7 @@ def find_creator(name):
     return record[0]
 
 
+# Acha ou adiciona o id do gênero
 def find_genre(name):
     global genres_df
     filt = (genres_df['genre'] == name)
@@ -35,19 +39,27 @@ def find_genre(name):
     return record[0]
 
 
+# Itera sobre cada row e adiciona os dados do livro ao df
 for index, row in books.iterrows():
     try:
+        # Cria lista com gêneros
         genres = row['genres'].split(", ")
+
+        # Adiciona a linha no df
         a_series = pd.Series(
             [row['title'], 'livro', row['publisher'],
              row['description'], row['firstPublishYear'],
              row['coverImg'], row['rating'],
              row['numRatings']], index=works.columns)
         works = works.append(a_series, ignore_index=True)
+
+        # Encontra o id do work
         filt_id = (works['name'] == row['title'])
         book_id = works.loc[filt_id].index[0]
         print("ID:", book_id)
         print(row['title'])
+
+        # Adiciona os gêneros e os produtores em suas devidas tabelas/relações.
         for genre in genres:
             genre_id = find_genre(genre)
             wg_series = pd.Series([book_id, genre_id],

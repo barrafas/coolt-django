@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Recuperando dataframes
 works = pd.read_csv('works.csv', index_col=0)
 genres_df = pd.read_csv('genres.csv', index_col=0)
 creators_df = pd.read_csv('creators.csv', index_col=0)
@@ -11,21 +12,25 @@ games_info = pd.read_csv('external/steam.csv.zip', compression='zip').head(100)
 games_info = games_info.drop(columns=['english', 'platforms', 'required_age', 'categories', 'steamspy_tags',
                                       'achievements', 'median_playtime', 'average_playtime', 'owners', 'price'])
 
+# Criando espécie de rating
 games_info['qtd_rating'] = games_info['positive_ratings'] + \
     games_info['negative_ratings']
 games_info['avg_rating'] = games_info['positive_ratings'] * \
     10/games_info['qtd_rating']
 
+# Padronizando df
 games_info = games_info.drop(columns=['positive_ratings', 'negative_ratings'])
 games_info = games_info.rename(columns={'appid': 'steam_appid'})
 
 ######
 
+# Dataframe com descrição
 games_desc = pd.read_csv(
     'external/steam_description_data.csv.zip', compression='zip').head(100)
 games_desc = games_desc.drop(
     columns=['detailed_description', 'about_the_game'])
 
+# Dataframe com link da imagem
 games_media = pd.read_csv('external/steam_media_data.csv.zip',
                           compression='zip').head(100)
 games_media = games_media.drop(columns=['screenshots', 'background', 'movies'])
@@ -33,12 +38,14 @@ games_media = games_media.drop(columns=['screenshots', 'background', 'movies'])
 games_info = pd.merge(games_info, games_desc, how='inner', on='steam_appid')
 games_info = pd.merge(games_info, games_media, how='inner', on='steam_appid')
 
+# Deixa o df preparado para o loop
 games_info = games_info.drop(columns=['steam_appid'])
 games = games_info.rename(columns={'release_date': 'released'})
 
 #####
 
 
+# Acha ou adiciona o id do criador
 def find_creator(name):
     global creators_df
     filt = (creators_df['creator'] == name)
@@ -52,6 +59,7 @@ def find_creator(name):
     return record[0]
 
 
+# Acha ou adiciona o id do gênero
 def find_genre(name):
     global genres_df
     filt = (genres_df['genre'] == name)
@@ -65,19 +73,27 @@ def find_genre(name):
     return record[0]
 
 
+# Itera sobre cada row e adiciona os dados do jogo ao df
 for index, row in games.iterrows():
     try:
+        # Cria lista com gêneros
         genres = row['genres'].split(";")
+
+        # Adiciona a linha no df
         a_series = pd.Series(
             [row['name'], 'jogo', row['publisher'],
              row['short_description'], row['released'],
              row['header_image'], row['avg_rating'],
              row['qtd_rating']], index=works.columns)
         works = works.append(a_series, ignore_index=True)
+
+        # Encontra o id do work
         filt_id = (works['name'] == row['name'])
         game_id = works.loc[filt_id].index[0]
         print("ID:", game_id)
         print(row['name'])
+
+        # Adiciona os gêneros e os produtores em suas devidas tabelas/relações.
         for genre in genres:
             genre_id = find_genre(genre)
             wg_series = pd.Series([game_id, genre_id],

@@ -1,3 +1,5 @@
+## Não utilizado ##
+
 import sqlite3 as sqlite
 
 conn = sqlite.connect('coolt.db')
