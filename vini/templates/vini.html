@@ -22,22 +22,67 @@
 {% block content %} 
     {% include 'nav.html' %}
     <div class="container">
-      <div class="row">
-        <div class="main-center col-md-12">
+      <div class="row mt-3">
+        <div class="main-center col-md-6">
+          <div class="article round">
+          <h2>Ao longo dos anos, como foi alterada a popularidade de cada tipo de obra?</h2>
+          <p>Análise de quanto cada tipo de obra recebeu avaliações ao longo dos anos, em uma tentativa de analisar tendências de popularidade do tipo de obra</p><br>
+          <p>Ao lado um gráfico com a quantidade de avaliações de cada tipo de mídia por década. A linha é na verdade uma média móvel, que logo nos dá uma ideia de 
+            que os livros estão no geral muito acima das outras mídias em questão de quantas vezes foram avaliados, logo seguidos por nossos amadados ANIMES e 
+            então jogos. As séries e os filmes ficam escondidos de tão poucas avaliações que receberam.</p><br>
+          </div>
+        </div>
+      <div class="main-right col-md-6">
+        {{ popularity|safe }}
+      </div>
+      {% for i in range5 %}
+        <br>
+        <div class="main-center col-md-6 my-auto">
+          <div class="row mt5">
+            <div class="article round">
+              <h3>{{ titles|index:i }}</h3>
+              <p>{{ insights|index:i }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="main-right col-md-6">
+          {{ ind_pop|index:i|safe }}
+        </div>
+      {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+      {% comment %} <div class="row">
+        <div class="main-center col-md-6">
           <div class="article round">
             <h2>Ao longo dos anos, como foi alterada a popularidade de cada tipo de obra?</h2>
             <p>Análise de quanto cada tipo de obra recebeu avaliações ao longo dos anos, em uma tentativa de analisar tendências de popularidade do tipo de obra</p>
-            {{ popularity|safe }}
             <p>Acima um gráfico com a quantidade de avaliações de cada tipo de mídia por década. A linha é na verdade uma média móvel, que logo nos dá uma ideia de 
               que os livros estão no geral muito acima das outras mídias em questão de quantas vezes foram avaliados, logo seguidos por nossos amadados ANIMES e 
-              então jogos. As séries e os filmes ficam escondidos de tão poucas avaliações que receberam.
+              então jogos. As séries e os filmes ficam escondidos de tão poucas avaliações que receberam.</p>
             {% for i in range5%}
-              {{ ind_pop|index:i|safe }}
               {{ insights|index:i }}
+              <br>
             {% endfor %}
           </div>
         </div>
-      </div>
+        <div class="main-center col-md-6">
+          <div class="article round">
+            {{ popularity|safe }}
+            {% for i in range5%}
+              {{ ind_pop|index:i|safe }}
+            {% endfor %}
+          </div>
+        </div>
+      </div> {% endcomment %}
     </div>
 {% endblock %}
 
