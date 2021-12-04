@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+
+{% block headinfo %}
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/negocio.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Minha Estante</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/tako2.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    {% include 'nav.html' %}
+
+
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-4">
+        <div class="profile">
+            <h2>@tio.rafa</h2>
+            
+            <img id='prof-pic' class='d-flex' src="http://www.adirferreira.com.br/wp-content/uploads/2010/10/thumbs_up.jpg" alt="Tio Rafa Picture">
+            
+            <ul class="list-group">
+                <li class="list-group-item"><span class="bi-person-circle"></span> Rafael de Pinho</li>
+                <li class="list-group-item"><span class="bi-instagram"></span> tio.rafa</li>
+                <li class="list-group-item"><span class="bi-twitter"></span> tio.rafa</li>
+            </ul>
+
+            <hr class="border-5 border-top">
+            <h3>Sobre mim</h3>
+            <p>Inteligência Artificial e professor nas horas livres. Encontrou algo sobre mim na internet? Me avise pelo meu email pessoal. Se você tiver sorte, posso te considerar um grande medíocre. Se eu te ofender sem você merecer, volte e mereça!</p> 
+
+            <hr class="border-5 border-top">
+
+            <h3>Gêneros favoritos</h3>
+            <div id="genres">
+              <span class="badge rounded-pill bg-primary">Sci-Fi</span>
+              <span class="badge rounded-pill bg-secondary">Isekai</span>
+              <span class="badge rounded-pill bg-success">Aventura</span>
+              <span class="badge rounded-pill bg-danger">Clássico</span>
+            </div>
+
+            <hr class="border-5 border-top">
+
+            <h3>Minhas estatísticas</h3>
+            <div id="stats">
+              <span>Em consumo</span>
+              <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 16%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">16%</div>
+              </div>
+              <hr class="border-2 border-top">
+              <span>Completo</span>
+              <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">60%</div>
+              </div>
+              <hr class="border-2 border-top">
+              <span>Na fila de espera</span>
+              <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 14%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">14%</div>
+              </div>
+              <hr class="border-2 border-top">
+              <span>Dropado</span>
+              <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">10%</div>
+              </div>
+            </div>
+              
+            <hr class="border-5 border-top">
+            <h3>Meus amigos</h3>
+            
+            <div id="friends">
+              <div class="row">
+                <div class="col-sm-4"><img src="{% static 'img/ana.jpg'%}" alt="Carol"></div>
+                <div class="col-sm-4"><img src="{% static 'img/eduardo.jpg'%}" alt="Eduardo"></div>
+                <div class="col-sm-4"><img src="{% static 'img/tiago.jpg'%}" alt="Tiago"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><img src="{% static 'img/rodrigo.jpeg'%}" alt="Rodrigo"></div>
+                <div class="col-sm-4"><img src="{% static 'img/vinicius.jpeg'%}" alt="Vinicius"></div>
+                <div class="col-sm-4"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEbQNedk-9Ijg/profile-displayphoto-shrink_800_800/0/1517393503602?e=1638403200&v=beta&t=iwhbXSDp3Gl1OWR9sAT3S9D8aynzZ-RWbqeKtcr_wmY" alt="Yuri"></div>
+            </div>
+
+            </div>
+
+            
+        </div>    
+        </div>
+        
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <div class="main-right col-md-8">
+            <div class="article">
+               <h2>Minha lista</h2>
+               <form id='filter'>
+
+                <!-- anime -->
+                <input class="btn-check" type="checkbox" id="animeCheck" value="anime" checked>
+                <label class="btn btn-outline-dark" for="animeCheck">Animes</label>
+
+                <!-- livro -->
+                <input class="btn-check" type="checkbox" id="livroCheck" value="livro" unchecked>
+                <label class="btn btn-outline-dark" for="livroCheck">Livros</label>
+
+                <!-- filme -->
+                <input class="btn-check" type="checkbox" id="filmeCheck" value="filme" unchecked>
+                <label class="btn btn-outline-dark" for="filmeCheck">Filmes</label>
+
+                <!-- jogo -->
+                <input class="btn-check" type="checkbox" id="jogoCheck" value="jogo" unchecked>
+                <label class="btn btn-outline-dark" for="jogoCheck">Jogos</label> 
+
+                <!-- serie -->
+                <input class="btn-check" type="checkbox" id="serieCheck" value="serie" unchecked>
+                <label class="btn btn-outline-dark" for="serieCheck">Series</label> 
+            </form>
+            <!-- Será preenchido pelo JS. -->
+
+            </div>
+            </div>
+        </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+  <!-- Script para filtros -->
+  <script src="{% static 'js/buttons.js' %}"></script>
+  <!-- Script do Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+{% endblock %}

@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import *
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("coolt_shelf.urls")),
-    path(r"rodrigo/", include('rodrigo.urls'))
+    path('negocio', negocio, name='negocio'),
 ]
