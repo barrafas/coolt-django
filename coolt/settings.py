@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_bootstrap_icons',
     'import_export',
     'carol',
-    
+    'rodrigo',
 ]
 
 MIDDLEWARE = [
