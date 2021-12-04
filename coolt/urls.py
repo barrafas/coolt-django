@@ -20,4 +20,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("coolt_shelf.urls")),
     path('adame/', include("adame.urls"))
+    path('tiago/', include('tiago.urls')),
+    path('vini/', include("vini.urls")),
+    path('carol/', include("carol.urls")),
+    path("rodrigo/", include('rodrigo.urls'))
 ]
+

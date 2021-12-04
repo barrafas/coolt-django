@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% bootstrap_css %}
+    <!-- Ícones do Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    {% block headinfo %}
+    <!-- Inserir CSS, Title, e FavIcon aqui -->
+    {% endblock %}
+
+</head>
+
+
+<body>
+    {% block content %}
+    {% endblock %}
+
+
+    {% include 'footer.html' %}
+    
+    {% block scripts %}
+    <!-- Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    {% endblock %}
+</body>
+</html>

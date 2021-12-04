@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+    "online" : range(100,1000) 
+}
+    return render(request, 'index.html', context)
 
 def error_404(request):
     return render(request, '404.html')
@@ -32,3 +35,4 @@ def series(request):
 
 def work(request):
     return render(request, 'work.html')
+
