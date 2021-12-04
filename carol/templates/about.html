@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+
+{% block headinfo %}    
+<!-- Nosso CSS (SASS) -->
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+<!--Atualiza o título da página-->
+<title>Coolt - Sobre</title>
+<!-- Adiciona o favicon-->
+<link rel="icon" href="{% static 'img/tako2.png' %}">
+<!-- Carrega as fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block content %} 
+    {% include 'nav.html' %}
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-6">
+        <!-- Blocos de texto quaisquer -->
+        <!-- Texto sobre quem somos nós -->
+        <div class="article round">
+            <h2>Quem são vocês?</h2>
+            <p>Nós somos um grupo de estudantes de ciência de dados da Escola de Matemática Aplicada (EMAp), da FGV. Nos conhecemos no início de 2021, quando começamos a fazer trabalhos em grupo juntos. O sucesso foi tanto que nos mantemos juntos desde então, cada um dando o melhor de si para aprender, impressionar professores e, é claro, cultivar a amizade.</p>
+            <h2>O que vocês buscam com este site?</h2>
+            <p>O objetivo inicial do projeto era passar de ano, porém vimos que ele pode ir muito além, e por isso esperamos que o Coolt possa não apenas ser a nossa passagem para o segundo ano da faculdade, mas que também possa ajudar pessoas a encontrarem entretenimento em formatos que ainda não conhecem, compartilhar a felicidade com pessoas que possuem gostos parecidos e criar gostos por novos tipos de obras.</p>
+            <h2>E como vocês vão alcançar isso?</h2>
+            <p>O planejamento atual é concluir e apresentar o projeto, colocá-lo no ar, e então buscar pessoas para utilizar o site e fazê-lo funcionar de verdade. É importante uma quantidade razoavelmente alta de pessoas usando para que nossos modelos de Inteligência Artificial funcionem e para que o site funcione como a rede social que é. Todavia, acreditamos que não há lugar em que não se possa chegar com foco na solução (e não no problema), união no time, qualidade no trabalho e vontade de fazer acontecer. </p>
+        </div>
+        </div>
+        
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <div class="main-right col-md-6">
+        <div class="article round">
+          <h2>De onde veio a ideia do Coolt?</h2>
+          <p>O Coolt é o produto de um trabalho da faculdade, cruzando as as matérias de Linguagens de Programação (LP) e Banco de Dados (BD). Em LP fomos designados para criar um site com HTML, CSS, JS e Python, e foi onde surgiu a ideia do shelf. Porém, sabíamos que iríamos precisar de um banco de dados com informações sobre as mídias de entretenimento, e então, juntando o útil ao agradável, utilizamos um trabalho de BD, onde precisamos criar e popular um banco de dados, para criar o banco que contém as informações necessárias pro site.</p> 
+          <h2>Onde vocês esperam chegar com o site?</h2>
+          <p>Não sabemos exatamente aonde isso vai dar, mas pra falar a verdade, ninguém nunca sabe onde nada vai chegar! Nós simplesmente estamos fazendo o nosso melhor para tentar tornar este projeto útil não só para nós, mas para qualquer  outra pessoa que tenha a oportunidade de usá-lo. Quem sabe um dia faça tanto sucesso que viramos concorrência da <s>CENSURADO</s>.</p> 
+        </div>
+        <img alt="Tentáculo segurando uma esfera do dragão" src="{% static 'img/tako.png'%}" class="img-fluid">
+        </div>
+        </div>
+
+        <!-- Imagens do time -->
+        <div class="main-center col">
+        <div class="dark-article">
+          <h2 class="big text-center">O time</h2>
+          <p class="medium text-center">Conheça nosso time</p>
+          <!-- Carol -->
+          <div class="row d-flex justify-content-center row-eq-height">
+          <div class="col-sm-3 text-center">
+          <div class="team-card">
+            <img class="team-img" src="{% static 'img/ana.jpg'%}" alt="Carol Erthal">
+            <h2>Carol Erthal</h2>
+            <p>Estudante universitária, leitora cult e potterhead</p>
+          </div>
+          </div>
+          <!-- Eduardo -->
+          <div class="col-sm-3 text-center">
+          <div class="team-card">
+            <img class="team-img" src="{% static 'img/eduardo.jpg'%}" alt="Eduardo Adame">
+            <h2>Eduardo Adame</h2>
+            <p>Conhecedor de tudo e mais, ama todo tipo de mídia</p>
+          </div>
+          </div>
+          <!-- Rodrigo -->
+          <div class="col-sm-3 text-center">
+          <div class="team-card">
+            <img class="team-img" src="{% static 'img/rodrigo.jpeg'%}" alt="Rodrigo Pintucci">
+            <h2>Rodrigo Pintucci</h2>
+            <p>Um ser misterioso, fã de mangás, animes e jogos</p>
+          </div>
+          </div>
+          </div>
+          <!-- Tiago -->
+          <div class="row d-flex justify-content-center row-eq-height">
+          <div class="col-sm-3 text-center">
+          <div class="team-card">
+            <img class="team-img" src="{% static 'img/tiago.jpg'%}" alt="Tiago Barradas">
+            <h2>Tiago Barradas</h2>
+            <p>Fluente em japonês, curte jogos, animes e filmes</p>
+          </div>
+          </div>
+          <!-- Vinicius -->
+          <div class="col-sm-3 text-center">
+          <div class="team-card">
+            <img class="team-img" src="{% static 'img/vinicius.jpeg'%}" alt="Vinicius Hedler">
+            <h2>Vinicius Hedler</h2>
+            <p>Curioso por conhecer novos filmes, animes e jogos</p>
+          </div>
+          </div>
+          </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+
+
+

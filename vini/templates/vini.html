@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+{% load index %}
+
+
+{% block headinfo %}    
+<!-- Nosso CSS (SASS) -->
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+<!--Atualiza o título da página-->
+<title>Coolt - Sobre</title>
+<!-- Adiciona o favicon-->
+<link rel="icon" href="{% static 'img/tako2.png' %}">
+<!-- Carrega as fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block content %} 
+    {% include 'nav.html' %}
+    <div class="container">
+      <div class="row">
+        <div class="main-center col-md-12">
+          <div class="article round">
+            <h2>Ao longo dos anos, como foi alterada a popualridade de cada tipo de obra?</h2>
+            <p>Análise de quanto cada tipo de obra recebeu avaliações ao longo dos anos, em uma tentativa de analisar tendências de popularidade do tipo de obra</p>
+            {{ popularity|safe }}
+            <p>Acima um gráfico com a quantidade de avaliações de cada tipo de mídia por década. A linha é na verdade uma média móvel, que logo nos dá uma ideia de 
+              que os livros estão no geral muito acima das outras mídias em questão de quantas vezes foram avaliados, logo seguidos por nossos amadados ANIMES e 
+              então jogos. As séries e os filmes ficam escondidos de tão poucas avaliações que receberam.
+            {% for i in range5%}
+              {{ ind_pop|index:i|safe }}
+              {{ insights|index:i }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
