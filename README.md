@@ -1,5 +1,5 @@
 # coolt-django
-Transição do projeto presente no repositório https://github.com/adamesalles/shelf-lp para plataforma Django.
+Transição do projeto presente no repositório https://github.com/adamesalles/shelf-lp para plataforma Django. *Atenção*: as análises exploratórias estão disponíveis a partir da página _Sobre_, no nome de cada um. 
 
 # Coolt
 
@@ -9,7 +9,7 @@ O site conta com suporte para 5 tipos de mídia: Animes, Filmes, Livros, Jogos e
 
 
 ## Página de Login
-Página de entrada do Coolt, onde é possível conhecer melhor o site, buscando atrair mais usuários. 
+Página de entrada do Coolt, onde é possível conhecer melhor o site, buscando atrair mais usuários. Contém uso de tag e filter random no nav.
 
 Partes funcionais:
 * Login, que leva à página _home_
@@ -29,6 +29,8 @@ Partes funcionais:
 
 ## Sobre
 Página de informações sobre o Coolt, trazendo planos e ideais do site. Além disso, tem informações sobre a equipe. 
+
+A partir do nome de cada integrante, é possível acessar sua análise exploratória com a pergunta de negócio.
 
 Partes funcionais:
 * Barra de navegação
@@ -60,20 +62,12 @@ Partes funcionais:
 * Footer
 * Ver mais, retorna ao topo
 
+## Base de dados
 
-## Organização do Trabalho
-
-No começo da semana, fizemos uma reunião e organizamos as primeiras páginas que cada um deveria desenvolver. A divisão ficou a seguinte:
-
----
-
- - Tiago e Carol: Montar o padrão para as páginas de exploração dos diversos tipos de mídia, e popular elas manualmente com exemplos
- - Edu: Montar a página "Minha Estante" com efeitos mais interativos usando javascript e json
- - Rodrigo e Vini: Montar as páginas "Chamariz" e "Sobre", além de pensarem sobre a identidade visual do site
-
-Em segunda etapa, nos juntamos em chamada para criar as últimas páginas, e para padronizar o estilo de todas as páginas. 
- Tiago e Carol focaram na criação da página template para a "Home", Rodrigo deu os toques finais no "Chamariz" e no footer, Vini focou na padronização das páginas com a identidade visual, e Edu fez a página template para as obras.
-
-Por fim, fizemos uma call para ajustar tudo que ainda era necessário, padronizar comandos e etc.. 
-
-
+Elaborada principalmente a partir de web scrapping (filmes, séries, animes) e arquivos csv nos casos em que não havia APIs satisfatórias (livros e jogos):
+ * https://www.themoviedb.org/ - Filmes e séries
+ * https://myanimelist.net/ - Animes
+ * https://www.kaggle.com/nikdavis/steam-store-games/version/3 - Jogos
+ * https://data.world/yansian/top-100-young-adult-fiction - Livros
+ 
+ 
