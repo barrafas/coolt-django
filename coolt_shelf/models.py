@@ -65,6 +65,8 @@ class Work(models.Model):
     synopsis = models.TextField(null=True)
     released = models.DateField()
     img_link = models.URLField(max_length=200, null=True)
+    avg_rating = models.FloatField(null=True)
+    qtd_rating = models.FloatField(null=True)
 
     def __str__(self):
         return self.name
