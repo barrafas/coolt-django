@@ -10,6 +10,11 @@ import numpy as np
 # Create your views here.
 
 def dashboard(request, usertag, work_type):
+    # O ponto da página é simular uma possível página de "dashboard" que cada usuário irá possuir
+    # Como não há usuários no site, usarei dados gerados aleatoriamente como placeholder
+    # As notas que um usuário pode dar vão de 0 a 5
+    # É possível controlar que tipo de obra está sendo visualizada através do argumento "work_type" na url
+
     if work_type.lower() not in ["anime"]:
         return redirect('404')
 
@@ -29,13 +34,13 @@ def dashboard(request, usertag, work_type):
     filtered = works_df[works_df["type"] == work_type].sample(random_amount) # Coleta essa quantia
     filtered.reset_index(inplace=True, drop=True) 
 
-    # Manipulação do numpy para gerar dados próximos de listas reais encontradas em sites similares
+    # Manipulação arbitrária do numpy para gerar dados próximos de listas reais encontradas em sites similares
     # (maior concentração de 4/5s,)
     user_scores = np.random.normal(5, 2, size=random_amount) 
     user_scores[(user_scores > 4) & (user_scores < 6)] = 4
     user_scores[user_scores >= 6] = 5
     user_scores[(user_scores < 2)] = 1
-    user_scores[0] = 1 # Garante que há ao menos uma nota 1
+    user_scores[0] = 0 
     user_scores = pd.DataFrame(user_scores, columns=["score"])
     scores_floor = pd.DataFrame(np.floor(user_scores), columns=["score"])
 
@@ -50,8 +55,7 @@ def dashboard(request, usertag, work_type):
     filter = (work_genres_df["work_id"].isin(favorites["name"].values) & (work_genres_df["genre_id"].astype(str).ne('None')))
     favorites_genres = work_genres_df.loc[filter, "genre_id"].value_counts(sort=True) # Pega os gêneros das obras favoritas
 
-
-    # -------------------- Começo do histograma ---------------------
+    # -------------------- Começo do template -----------------------
     simple_white = pio.templates["simple_white"]
     simple_white.layout.font.color = "#FFFFFF"
     simple_white.layout.plot_bgcolor = 'rgba(0, 0, 0, 0)'
@@ -61,7 +65,9 @@ def dashboard(request, usertag, work_type):
     simple_white.layout.yaxis.linecolor = 'rgba(0, 0, 0, 0)'
     simple_white.layout.yaxis.showticklabels = False
     simple_white.layout.yaxis.tickcolor = 'rgba(0, 0, 0, 0)'      
+    # --------------------- Fim do template -------------------------
 
+    # -------------------- Começo do histograma ---------------------
     fig = px.histogram(scores_floor, x="score", category_orders=dict(score=[1, 2, 3, 4, 5]), 
                        template=simple_white, color_discrete_sequence=["#0d0221"])
     fig.update_layout(
@@ -76,12 +82,14 @@ def dashboard(request, usertag, work_type):
     hist = pio.to_html(fig, full_html=False, default_height=500, default_width=700) # Converter figura para codigo html
     # ---------------------- Fim do histograma ----------------------
 
+    # ----------------------- Começo do donut -----------------------
     labels = favorites_genres.index.tolist()
     values = favorites_genres.values
 
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(template=simple_white)
     donut = pio.to_html(fig, full_html=False, default_height=500, default_width=700)
+    # ------------------------ Fim do donut -------------------------
 
 
     context = {
