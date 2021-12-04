@@ -62,6 +62,9 @@ Partes funcionais:
 * Footer
 * Ver mais, retorna ao topo
 
+## Erro 404
+Acessível a partir de qualquer botão não acessível no site
+
 ## Base de dados
 
 Elaborada principalmente a partir de web scrapping (filmes, séries, animes) e arquivos csv nos casos em que não havia APIs satisfatórias (livros e jogos):
