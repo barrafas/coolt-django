@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load bootstrap_icons %}
+{% load static %}
+
+
+{% block headinfo %}
+    <!-- Nosso CSS (SASS) -->
+    <link href="{% static 'css/negocio.css' %}" rel="stylesheet">
+    <!--Atualiza o título da página-->
+    <title>Coolt - Variação</title>
+    <!-- Adiciona o favicon-->
+    <link rel="icon" href="{% static 'img/tako2.png' %}">
+    <!-- Carrega as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    {% include 'nav.html' %}
+
+
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-4">
+        <div class="profile">
+            <div>
+                <h1>Pergunta de negócio</h1>
+                <h3>Qual tipo de mídia possui notas mais variadas?</h3>
+            </div>
+            <hr class="border-5 border-top">
+            <!-- Divisórias que dependem dos botões-->
+            <div id="animeicon" style="display: none;">
+                <h2>Animes</h2>
+                <img   class='d-flex imgsize' src="{% static 'img/animesicon.png'%}" alt="Animes">  
+                
+            </div>
+            <div id="livroicon" style="display: none;">
+                <h2>Livros</h2>
+                <img  class='d-flex' src="{% static 'img/booksicon.png'%}"  alt="Livros">   
+            </div>
+            <div id="filmeicon" style="display: none;">
+                <h2>Filmes</h2>
+                <img   class='d-flex' src="{% static 'img/moviesicon.png'%}" alt="Filmes">   
+            </div>
+            <div id="jogoicon" style="display: none;">
+                <h2>Jogos</h2>
+                <img   class='d-flex' src="{% static 'img/gamesicon.png'%}" alt="Jogos">   
+            </div>
+            <div id="serieicon" style="display: none;">
+                <h2>Séries</h2>
+                <img   class='d-flex' src="{% static 'img/seriesicon.png'%}" alt="Séries">   
+            </div>
+            <hr class="border-5 border-top">
+            <div>
+                <h1>Resposta</h1>
+                <h6>Pegando o período de 2000 até 2015, é possível montar boxplots para cada tipo e observar suas variações.</h6>
+                <h6>A maior variação ocorre nas séries, chegando até 7 pontos no ano de 2009. Em seguida, temos os jogos com 4 pontos de diferença.</h6>
+                <h6>Observamos que a menor variação ocorre nos animes, sendo que para cada ano esta foi menor que 0.6. Um padrão semelhante pode ser observado com livros.</h6>
+                <h6>Durante esse período de tempo, não temos muita informação para os filmes. Também é válido notar que a variação das séries nos ultimos anos foi bem baixa.</h6>
+                <h6>Com esses dados, podemos inferir que o critério de avaliação de animes e livros é menos pesado do que em séries e jogos, fazendo com que eles convirjam para notas altas e parecidas.</h6>
+            </div>
+            
+        </div>    
+        </div>
+        
+        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <div class="main-right col-md-8">
+            <div class="article">
+               <h2>Clique em um dos botões:</h2>
+               <form id='filter'>
+
+                <!-- anime -->
+                <input class="btn-check" type="checkbox" id="animeCheck" value="anime" unchecked>
+                <label class="btn btn-outline-dark" for="animeCheck">Animes</label>
+
+                <!-- livro -->
+                <input class="btn-check" type="checkbox" id="livroCheck" value="livro" unchecked>
+                <label class="btn btn-outline-dark" for="livroCheck">Livros</label>
+
+                <!-- filme -->
+                <input class="btn-check" type="checkbox" id="filmeCheck" value="filme" unchecked>
+                <label class="btn btn-outline-dark" for="filmeCheck">Filmes</label>
+
+                <!-- jogo -->
+                <input class="btn-check" type="checkbox" id="jogoCheck" value="jogo" unchecked>
+                <label class="btn btn-outline-dark" for="jogoCheck">Jogos</label> 
+
+                <!-- serie -->
+                <input class="btn-check" type="checkbox" id="serieCheck" value="serie" unchecked>
+                <label class="btn btn-outline-dark" for="serieCheck">Series</label> 
+            </form>
+            <hr class="border-5 border-top">
+            <!-- Será preenchido pelo JS. -->
+            <div>
+            <!-- Boxplots que aparecerão de acordo com os botões-->
+            <div id="animeplot" style="display: none;">    
+                {{ anime|safe }}
+            </div>
+            <div id="livroplot" style="display: none;">
+                {{ livro|safe }}
+            </div>
+            <div id="filmeplot" style="display: none;">
+                {{ filme|safe }}
+            </div>
+            <div id="jogoplot" style="display: none;">
+                {{ jogo|safe }}
+            </div>
+            <div id="serieplot" style="display: none;">
+                {{ serie|safe }}
+            </div>
+            </div>
+        </div>
+            </div>
+        </div>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+  <!-- Script para selecionar um botão de cada vez -->
+  <script src="{% static 'js/buttons.js' %}"></script>
+  <!-- Script do Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+{% endblock %}
