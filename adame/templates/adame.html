@@ -37,9 +37,11 @@
             Veja abaixo o histograma que aponta os gêneros mais comuns dentre as obras do tipo {{ name }}. </br>
             <hr width="1">
             <center>
-          {{ plot | safe}}
+          {{ plot.0 | safe}}
         </center>
-        </div>
+      </div>
+      <hr width="1">
+      Como pode-se ver, o gênero com maior quantidade é {{ plot.1.0 }}, com {{ plot.1.1 }} aparições.
         {% endfor %}
       </div>
     </div>

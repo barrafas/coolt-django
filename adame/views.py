@@ -35,15 +35,20 @@ def index(request):
     for type in TYPES:
         # Nome para utilizar nas fstrings
         name = (type + 's').lower()
+        values = size_genres[type].sort_values(ascending=False).head(15)
+
+        # Maior valor
+        max = (values.index[0], values[0])
 
         # Criando plot
-        fig = px.bar(size_genres[type].sort_values(ascending=False).head(15),
+        fig = px.bar(values,
                      template='plotly_dark',
                      labels={
-            "genre_id": "Gênero",
-            "value": "Quantidade"
-        }
-        )
+                         "genre_id": "Gênero",
+                         "value": "Quantidade",
+                         "variable": "Coluna"
+                     }
+                     )
         fig.update_layout(
             bargap=0.2,
             margin=dict(l=5, r=5, t=55, b=5),
@@ -54,8 +59,9 @@ def index(request):
         fig.update_yaxes(fixedrange=True, title=None)
 
         # Salvando na variável a exportar
-        plots[name.title()] = pio.to_html(fig, full_html=False,
-                                          default_height=400, default_width=700)
+        plot = pio.to_html(fig, full_html=False,
+                           default_height=400, default_width=700)
+        plots[name.title()] = (plot, max)
 
     context = {'plots': plots}
 
