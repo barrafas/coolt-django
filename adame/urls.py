@@ -3,4 +3,4 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('', index, name='adame_index')]
+    path('', index, name='adame')]

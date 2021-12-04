@@ -5,5 +5,5 @@ from .views import *
 
 
 urlpatterns = [
-    path('', Vini.as_view()),
+    path('', Vini.as_view(), name='vini'),
 ]
