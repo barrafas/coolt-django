@@ -11,7 +11,8 @@ body p {
   font-size: 16px;
 }
 
-.dark-article, .article {
+.dark-article,
+.article {
   padding: 20px 10px;
 }
 
@@ -88,7 +89,8 @@ div.card p {
   font-family: "Roboto Slab", seriff;
 }
 
-.text-ellipsis-4, .text-ellipsis-3 {
+.text-ellipsis-4,
+.text-ellipsis-3 {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box !important;
@@ -124,16 +126,19 @@ footer a:hover {
   color: snow;
 }
 
-.btn-outline-success, .btn-outline-dark {
+.btn-outline-success,
+.btn-outline-dark {
   color: #0d0221;
   border-color: #0d0221;
 }
-.btn-outline-success:hover, .btn-outline-dark:hover {
+.btn-outline-success:hover,
+.btn-outline-dark:hover {
   background-color: #0d0221;
   border-color: #0d0221;
 }
 
-.btn-check:checked + .btn-outline-success, .btn-check:checked + .btn-outline-dark {
+.btn-check:checked + .btn-outline-success,
+.btn-check:checked + .btn-outline-dark {
   background-color: #0d0221;
   border-color: #0d0221;
 }
@@ -159,6 +164,12 @@ footer a:hover {
 }
 .team-card p {
   font-size: 21px;
+}
+
+.center-content {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /*# sourceMappingURL=about.css.map */
