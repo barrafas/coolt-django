@@ -1,0 +1,5 @@
+# virtual env
+vini_venv/
+
+# Python
+__pycache__/
