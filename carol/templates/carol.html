@@ -23,20 +23,54 @@
     <div class="container">
         <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
         <div class="row">
-        <!-- Divisória main-center determina a "proporção" (8 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <!-- Divisória main-center determina a "proporção" (6 de 12) do espaço vertical da página que os contêiners irão ocupar -->
         <div class="main-center col-md-6">
-
+            <div class="article round">
+                <h2>Coolt e os livros</h2>
+                <p>O Coolt tem a proposta de centralizar a organização do consumo de obras de um usuário. Ele tem base em sites e aplicativos semelhantes, e a maioria destes têm relações comerciais com produtoras e editoras. O 'Skoob', site brasileiro de organização de livros, firma parceria com editoras e realiza divulgação dentro do aplicativo, em parcerias pagas, o que nos leva à seguinte pergunta de negócio:</p> 
+                <h2>Com quais editoras de livros seria mais interessante estabelecer parcerias?</h2>
+                <p>Buscaremos responder essa pergunta graficamente na análise a partir do banco de dados do Coolt. Veja ao lado a distribuição de livros por editora, em que não consideramos aquelas que publicaram apenas um livro, já que essa parceria seria pouco relevante. </p> 
+              </div>
         </div>
         
-        <!-- Divisória que coloca o texto em uma coluna à direita das colunas anteriores () -->
+        <!-- Divisória  -->
         <div class="main-right col-md-6">
-       
-        </div>
-
         {{ barplot|safe }}
+        </div>
        
         </div>
     </div>
+
+    <div class="container">
+        <!-- Indica o comportamento das divisórias a seguir, elas ocuparão uma "linha" de seu contêiner -->
+        <div class="row">
+        <!-- Divisória main-center determina a "proporção" (12 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+        <div class="main-center col-md-12">
+            <div class="article round">
+                <h2> Leitores das obras</h2>
+                <p>Apesar de o gráfico anterior demonstrar a prevalência da editora HarperTeens como principal no mercado entre os livros observados na base de dados, note que essa constatação não é definitiva, pois o Coolt tem interesse em fazer publicidade de obras de grande alcance entre os usuários, não apenas das editoras que mais publicam. Então faremos uma plotagem para descobrir se, de fato, a HarperTeens é aquela em que se deve investir:</p> 
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Divisória main-center determina a "proporção" (6 de 12) do espaço vertical da página que os contêiners irão ocupar -->
+            <div class="main-left col-md-6">
+                {{ barplot2|safe }}
+            </div>
+            <div class="main-right col-md-6">
+                <div class="article round">
+                    <p> Veja ao lado o resultado da plotagem. Há grande diferença entre a quantidade média de leitores de cada editora que estamos analisando, então esse fator é bastante relevante. A análise indica que a editora Scholastic Press tem enormes vendas, provavelmente relacionada a estudantes devido ao nome. Note que a HarperTeen apresenta certa insignificânica nas vendas. </p>
+                    <p> Assim, é de grande interesse do Coolt firmar uma parceria com a Scholastic Press devido ao alcance, mas ainda é vantajoso buscar a HarperTeens, que publica com frequência sem alcançar tantos leitores, já que essa editora provavelmenete teria mais interesse na parceria do que a já melhor colocada no mercado.</p>
+                </div>
+            <img alt="Tentáculo segurando um livro" src="{% static 'img/tent_laranja.png' %}" class="tentacle">
+
+                
+            </div>
+            
+       
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
