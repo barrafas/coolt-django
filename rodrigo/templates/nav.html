@@ -1,0 +1,53 @@
+{% load static %}
+<!-- Modelo de Nav -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+      <!-- Nome principal -->
+      <a class="navbar-brand" href="{% url 'home' %}"> 
+        <img width=100 height=50 src="{% static 'img/nome.png' %}" alt="Coolt">
+      </a>
+        <!-- Botão para acesso pelo celular -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Barra de navegação -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'profile' %}">Minha Estante</a>
+            </li>
+
+            <!-- Lista de Outras Páginas -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Explorar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'animes' %}">Animes</a></li>
+                <li><a class="dropdown-item" href="{% url 'movies' %}">Filmes</a></li>
+                <li><a class="dropdown-item" href="{% url 'books' %}">Livros</a></li>
+                <li><a class="dropdown-item" href="{% url 'games' %}">Jogos</a></li>
+                <li><a class="dropdown-item" href="{% url 'series' %}">Séries</a></li>
+              </ul>
+
+            </li>
+          </ul>
+
+          <!-- Barra de pesquisas -->
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+            <a class="btn btn-outline-success" href="{% url '404' %}"><span class="bi bi-search"></span></a>
+          </form>
+
+          <!-- Botão de sair -->
+          <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}"> <b>Sair</b></a>
+              </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
