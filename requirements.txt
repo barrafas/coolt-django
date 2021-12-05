@@ -7,7 +7,7 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 dj-database-url==0.5.0
 dj-static==0.0.6
-django==3.2.7
+Django==3.2.7
 django-bootstrap-icons==0.7.3
 django-bootstrap5==21.1
 django-import-export==2.6.1
