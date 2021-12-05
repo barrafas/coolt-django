@@ -25,8 +25,8 @@ class Vini(TemplateView):
         self.extra_context = {}
         df = self.load_df()
         figs = self.create_figs(df)
-        insights = {"insights":self.get_insights(), "range5":[0,1,2,3,4]}
-        self.to_context(**figs,**insights)
+        extra_context = {"insights":self.get_insights(), "titles":self.get_titles(), "range5":[0,1,2,3,4]}
+        self.to_context(**figs,**extra_context)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -96,9 +96,20 @@ class Vini(TemplateView):
             a quantidade de avaliações é reduzida."
         
         insights = [i0,i1,i2,i3,i4]
-        #[ eval(f"insights.append(i{n})") for n in range(5)]
 
         return insights
+
+    def get_titles(self):
+        
+        t0 = "Livro"
+        t1 = "Série"
+        t2 = "Anime"
+        t3 = "Jogo"
+        t4 = "Filme"
+        
+        titles = [t0,t1,t2,t3,t4]
+
+        return titles
 
 
     def to_context(self, **kwargs):

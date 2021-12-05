@@ -15,7 +15,7 @@ def dashboard(request, usertag, work_type):
     # As notas que um usuário pode dar vão de 0 a 5
     # É possível controlar que tipo de obra está sendo visualizada através do argumento "work_type" na url
 
-    if work_type.lower() not in ["anime"]:
+    if work_type.lower() not in ["anime", "filme", "livro", "jogo", "série"]:
         return redirect('404')
 
     work_type = work_type.capitalize()
@@ -83,8 +83,8 @@ def dashboard(request, usertag, work_type):
     # ---------------------- Fim do histograma ----------------------
 
     # ----------------------- Começo do donut -----------------------
-    labels = favorites_genres.index.tolist()
-    values = favorites_genres.values
+    labels = favorites_genres.head(10).index.tolist()
+    values = favorites_genres.head(10).values
 
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(template=simple_white)
