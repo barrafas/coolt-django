@@ -51,7 +51,7 @@ class Vini(TemplateView):
         popularity = px.scatter(df_pop, x="released", y="qtd_rating", color="type", trendline="rolling", trendline_options={"window":2}, opacity=0, labels={"type":"Tipo"})
         popularity.update_xaxes(fixedrange=True, title="Década", range=[1987,2022])
         popularity.update_yaxes(fixedrange=True, title="Quantidade de Avaliações", range=[-1000000,8000000])
-        popularity = pio.to_html(popularity, full_html=True, default_height=400, default_width=700)
+        popularity = pio.to_html(popularity, full_html=True, default_height=400, default_width=600)
 
 
         ind_pop = []
@@ -61,7 +61,7 @@ class Vini(TemplateView):
             i_p = px.scatter(df_t, y="qtd_rating", x="released", color="type", labels={"type":"Tipo"}, opacity=.7)
             i_p.update_xaxes(fixedrange=True, title="Década")
             i_p.update_yaxes(fixedrange=True, title="Quantidade de Avaliações")
-            i_p = pio.to_html(i_p, full_html=True, default_height=400, default_width=700)
+            i_p = pio.to_html(i_p, full_html=True, default_height=400, default_width=600)
             ind_pop.append(i_p)
 
 
@@ -73,7 +73,7 @@ class Vini(TemplateView):
     def figs_to_html(self, figs):
         html_figs = {}
         for k in figs:
-            html_figs[k] = pio.to_html(figs[k], full_html=True, default_height=400, default_width=700)
+            html_figs[k] = pio.to_html(figs[k], full_html=True, default_height=400, default_width=600)
         return html_figs
 
     def get_insights(self):
