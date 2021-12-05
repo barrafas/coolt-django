@@ -42,8 +42,8 @@ def negocio(request):
     fig1.update_xaxes(fixedrange=True, title='Ano de lançamento')
     fig1.update_yaxes(fixedrange=True, title='Notas')
 
-    animebox = pio.to_html(fig1, full_html=False,
-                           default_height=400, default_width=800)
+
+    animebox = pio.to_html(fig1, full_html=False )
 
     # Criação do boxplot de livro
     fig2 = px.box(livros, x='released', y='avg_rating',
@@ -61,8 +61,7 @@ def negocio(request):
     fig2.update_xaxes(fixedrange=True, title='Ano de lançamento')
     fig2.update_yaxes(fixedrange=True, title='Notas')
 
-    livrobox = pio.to_html(fig2, full_html=False,
-                           default_height=400, default_width=800)
+    livrobox = pio.to_html(fig2, full_html=False )
 
     # Criação do boxplot de filme
     fig3 = px.box(filmes, x='released', y='avg_rating',
@@ -80,8 +79,8 @@ def negocio(request):
     fig3.update_xaxes(fixedrange=True, title='Ano de lançamento')
     fig3.update_yaxes(fixedrange=True, title='Notas')
 
-    filmebox = pio.to_html(fig3, full_html=False,
-                           default_height=400, default_width=800)
+
+    filmebox = pio.to_html(fig3, full_html=False )
 
     # Criação do boxplot de jogo
     fig4 = px.box(jogos, x='released', y='avg_rating',
@@ -99,8 +98,8 @@ def negocio(request):
     fig4.update_xaxes(fixedrange=True, title='Ano de lançamento')
     fig4.update_yaxes(fixedrange=True, title='Notas')
 
-    jogobox = pio.to_html(fig4, full_html=False,
-                          default_height=400, default_width=800)
+    jogobox = pio.to_html(fig4, full_html=False )
+
 
     # Criação do boxplot de série
     fig5 = px.box(series, x='released', y='avg_rating',
@@ -118,8 +117,9 @@ def negocio(request):
     fig5.update_xaxes(fixedrange=True, title='Ano de lançamento')
     fig5.update_yaxes(fixedrange=True, title='Notas')
 
-    seriebox = pio.to_html(fig5, full_html=False,
-                           default_height=400, default_width=800)
+
+    seriebox = pio.to_html(fig5, full_html=False )
+
 
     # Cria os contextos de acordo com a forma em html dos boxplots
     context = {
