@@ -1,6 +1,12 @@
 # coolt-django
 Transição do projeto presente no repositório https://github.com/adamesalles/shelf-lp para plataforma Django. *Atenção*: as análises exploratórias estão disponíveis a partir da página _Sobre_, no nome de cada um. 
 
+Caso o queira acessar o banco de dados através do /admin, o root é:
+
+login: tiorafa
+senha: camacho
+
+
 # Coolt
 
 Conheça o Coolt: o melhor site de estante de mídias! Organize seus interesses, receba recomendações personalizadas e faça resenhas, relacionando todos os tipos de entretenimento de seu interesse! O Tako, nosso mascote, está aqui para ajudar!
