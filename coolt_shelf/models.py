@@ -1,16 +1,16 @@
 from django.db import models
 from django.utils import timezone
 
+
+
+def user_directory_path(instance, filename):
+    # Diretório para imagem do user MEDIA_ROOT/user_<id>/<filename>
+    return 'users/user_{0}/{1}'.format(instance.user.username, filename)
+
 # CREATE TABLE creators (
 #     id INTEGER PRIMARY KEY,
 #     creator varchar(255) NOT NULL
 # );
-
-
-def user_directory_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'users/user_{0}/{1}'.format(instance.user.username, filename)
-
 
 class Creator(models.Model):
     creator = models.CharField(max_length=255)
@@ -29,7 +29,7 @@ class Creator(models.Model):
 #     created TEXT NOT NULL DEFAULT (datetime('now'))
 # );
 
-
+# Não utilizado
 class User(models.Model):
     username = models.CharField(max_length=50)
     name = models.CharField(max_length=255)
@@ -101,7 +101,7 @@ class Genre(models.Model):
 #     FOREIGN KEY(review_id) REFERENCES reviews(id)
 # );
 
-
+# Não utilizado
 class Review(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.PROTECT,  related_name='%(class)s_reviews_created')
@@ -124,7 +124,7 @@ class Review(models.Model):
 #     FOREIGN KEY(review_id) REFERENCES reviews(id)
 # );
 
-
+# Não utilizado
 class Review_Like(models.Model):
     TYPES = (
         (0, 'Não Curti'),
@@ -149,7 +149,7 @@ class Review_Like(models.Model):
 #     FOREIGN KEY(status_id) REFERENCES statuses(id)
 # );
 
-
+# Não utilizado
 class Shelf(models.Model):
     STATUSES = (
         ('in consume', 'In Consume'),
@@ -175,7 +175,7 @@ class Shelf(models.Model):
 #     FOREIGN KEY(target_id) REFERENCES users(id)
 # );
 
-
+# Não utilizado
 class User_Follower(models.Model):
     source_id = models.ForeignKey(
         User, on_delete=models.PROTECT,  related_name='source_user_followers_created')
