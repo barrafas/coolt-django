@@ -32,25 +32,23 @@
           então jogos. As séries e os filmes ficam escondidos de tão poucas avaliações que receberam.</p><br>
         </div>
       </div>
-    <div class="main-right col-md-6">
-      {{ popularity|safe }}
-    </div>
-    {% for i in range5 %}
-      <br>
-      <div class="main-center col-md-6 my-auto">
-        <div class="row">
-          <div class="article round">
-            <h3>{{ titles|index:i }}</h3>
-            <p>{{ insights|index:i }}</p>
+      <div class="main-right col-md-6">
+        {{ popularity|safe }}
+      </div>
+      {% for i in range5 %}
+        <br>
+        <div class="main-center col-md-6 my-auto">
+          <div class="row">
+            <div class="article round">
+              <h3>{{ titles|index:i }}</h3>
+              <p>{{ insights|index:i }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="main-right col-md-6 mt-5">
-        {{ ind_pop|index:i|safe }}
-      </div>
-    {% endfor %}
+        <div class="main-right col-md-6 mt-5">
+          {{ ind_pop|index:i|safe }}
+        </div>
+      {% endfor %}
+    </div>
   </div>
-{% endblock %}
-
-{% block scripts %}
 {% endblock %}
